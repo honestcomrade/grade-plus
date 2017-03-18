@@ -1,2 +1,25 @@
 # grade-plus
 A Teacher's Aide - from the command line
+
+grade-plus is a lightweight command line application to be used by teachers, TAs, and other educators to make managing
+classroom grades easier. 
+It's built in C++ with extensibility in mind: A teacher can create their own types of assignments
+with custom weights and scores to let grade-plus do all the calculus. 
+Simply fire up the application and choose what type of work is to be done.
+
+The API will allow a user to:
+
+   * Create a course roster with a desired number of students
+   
+   * Add new students or remove them from the roster
+   
+   * Add exams, lab exercises, or participation grades to each student's score
+   
+   * Adjust the grade weight of any particular score or per type of assignment
+
+   * Quickly view (in the command line) the performance of each student in any category
+
+   * Export a student's grades to an Excel or text file for progress reports
+   
+This project is intended for use by anyone who can work in a bash terminal, and upon release
+will be freely available to anyone who chooses to use it.
