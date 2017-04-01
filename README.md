@@ -1,5 +1,5 @@
 # grade-plus
-A Teacher's Aide - from the command line
+A Teacher's Aide -- From the Command Line
 
 grade-plus is a lightweight command line application to be used by teachers, TAs, and other educators to make managing
 classroom grades easier. 
