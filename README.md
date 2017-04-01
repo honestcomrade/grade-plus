@@ -23,3 +23,20 @@ The API will allow a user to:
    
 This project is intended for use by anyone who can work in a bash terminal, and upon release
 will be freely available to anyone who chooses to use it.
+
+# Current Usage
+We've just begun testing the database integration with sqlite. To run the test as it is
+currently implemented, pull the whole repository, then:
+
+```
+
+cd test
+make
+
+```
+
+# Why 'make' ?
+Since we are including the sqlite functionality, we need to link the object files to the data base. 
+Leveraging c-make by including a "make file" to generate the executable automates that process.
+
+
