@@ -1,28 +1,31 @@
+#include "Database.h"
 #include "Student.h"
-#include <sqlite3.h>
 
 #include <string>
 
 using namespace std;
 
-Student::Student(string id, string firstName, string lastName)
-    : id(id), firstName(firstName), lastName(lastName) {
-  sqlite3_open("test-1.sqlite", &db);
-}
+Student::Student(string id, string firstName, string lastName, Database db)
+: id(id), firstName(firstName), lastName(lastName), db(db) {}
 
-Student::~Student() { sqlite3_close(db); }
+Student::~Student() {}
 
 string Student::getId() {
-  string copy(id);
-  return copy;
+    string copy(id);
+    return copy;
 }
 
 string Student::getFirstName() {
-  string copy(firstName);
-  return copy;
+    string copy(firstName);
+    return copy;
 }
 
 string Student::getLastName() {
-  string copy(lastName);
-  return copy;
+    string copy(lastName);
+    return copy;
+}
+
+void Student::save() {
+    string command = "save";
+    db.execute(command);
 }

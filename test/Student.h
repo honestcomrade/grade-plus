@@ -1,25 +1,31 @@
-#include <sqlite3.h>
+#ifndef STUDENT_H
+#define STUDENT_H
+
+#include "Database.h"
+
 #include <string>
 
 using namespace std;
 
 class Student {
 public:
-  Student(string id, string firstName, string lastName);
-  ~Student();
-
-  string getId();
-  string getFirstName();
-  string getLastName();
-
-  void setId(string);
-  void setFirstName(string);
-  void setLastName(string);
-
+    Student(string, string, string, Database);
+    ~Student();
+    
+    string getId();
+    string getFirstName();
+    string getLastName();
+    
+    void setId(string);
+    void setFirstName(string);
+    void setLastName(string);
+    
+    void save();
 private:
-  sqlite3 *db;
-
-  string id;
-  string firstName;
-  string lastName;
+    string id;
+    string firstName;
+    string lastName;
+    Database db;
 };
+
+#endif
