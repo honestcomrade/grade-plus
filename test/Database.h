@@ -7,13 +7,14 @@
 using namespace std;
 
 class Database {
-public:
-    Database(string);
-    ~Database();
-    
-    void execute(string);
-private:
-    sqlite3 *db;
+ public:
+  Database(string);
+  ~Database();
+
+  void execute(string);
+
+ private:
+  sqlite3 *db;
 };
 
 #endif
