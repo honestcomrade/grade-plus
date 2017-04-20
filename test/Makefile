@@ -1,5 +1,4 @@
-CXX=clang++ -std=c++11
-FLAGS=-l sqlite3
+CXX = clang++ - std = c++ 11 FLAGS = -l sqlite3
 
-all:
-	$(CXX) $(FLAGS) *.cpp
+                                         all
+    : $(CXX) $(FLAGS) *.cpp

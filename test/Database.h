@@ -3,6 +3,7 @@
 
 #include <sqlite3.h>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -11,7 +12,7 @@ class Database {
   Database(string);
   ~Database();
 
-  void execute(string);
+  vector<vector<string>> execute(string);
 
  private:
   sqlite3 *db;
