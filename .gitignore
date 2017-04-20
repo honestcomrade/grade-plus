@@ -28,6 +28,7 @@
 *.sqlite
 *.xls
 *.txt
+*.json
 
 # OS generated files #
 ######################
