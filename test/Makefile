@@ -1,5 +1,7 @@
-CXX=clang++ -std=c++11
-FLAGS=-l sqlite3
+CXX=clang++
+CPPFLAGS=-std=c++11 -l sqlite3
 
-all:
-	$(CXX) $(FLAGS) *.cpp
+all: test1.out
+
+test1.out:
+	$(CXX) $(CPPFLAGS) *.cpp -o $@
