@@ -9,7 +9,7 @@ using namespace std;
 
 int main() {
   // main prompt
-  bool isOpen = true; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
+  bool isOpen = true;  // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
 
   // test instantiation of a Database object.
   cout << "Testing instantiation of a Database object:\n";
@@ -30,7 +30,9 @@ int main() {
   string openCourse;
   cout << "Welcome to grade-plus\n";
   cout << "What would you like to do?\n";
-  cout << "WORK on an existing Course "; cout.width(6); cout << right << "[W]\nCREATE a new Course " << right << " [C]\n";
+  cout << "WORK on an existing Course ";
+  cout.width(6);
+  cout << right << "[W]\nCREATE a new Course " << right << " [C]\n";
   cout << " $: ";
   // input loop
   while (true) {
@@ -44,16 +46,18 @@ int main() {
       // open the course with openCourse function
       openCourse = input;
       cout << "Calling course.open(" << openCourse << ");\n";
-      
+
       break;
     }
 
     // create Course
     else if (tolower(input[0]) == 'c') {
       cout << "Please enter a unique name\n";
-      cout << "Course Name?: "; cin >> input;
+      cout << "Course Name?: ";
+      cin >> input;
       string cName = input;
-      cout << "Course Subject?: "; cin >> input;
+      cout << "Course Subject?: ";
+      cin >> input;
       string cSubj = input;
       cout << "Creating Course: " << cName << " - " << cSubj << endl;
       // call the createcourse function
@@ -64,7 +68,7 @@ int main() {
     // quit
     else if (tolower(input[0]) == 'q') {
       cout << "Goodbye\n";
-      !isOpen; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
+      !isOpen;  // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
       break;
     }
 
@@ -75,9 +79,9 @@ int main() {
       continue;
     }
   }  // opening loop
-  
-  // second loop while the course is open  
-  while (/*openCourse*/isOpen) {
+
+  // second loop while the course is open
+  while (/*openCourse*/ isOpen) {
     cout << "LIST ALL THE COURSE DETAILS:\n";
     cout << "Name: \t" << openCourse << "\n\n";
     cout << "\tAdd/Remove STUDENTS [S]\n\tAdd/Remove/Modify ASSIGNMENTS\n $: ";
@@ -103,7 +107,8 @@ int main() {
         cout << "Student ID?: ";
         cin >> input;
         string stuID = input;
-        cout << "Student Name: " << stuFirst << " " << stuLast << " Student ID: " << stuID << endl; 
+        cout << "Student Name: " << stuFirst << " " << stuLast
+             << " Student ID: " << stuID << endl;
       }
       // drop student
       else if (tolower(input[0]) == 'r') {
@@ -111,27 +116,34 @@ int main() {
         cin >> input;
 
         // call drop student function on that student
-        // cout << "Name: \t\t" << input.getFirstName() << " " << input.getLastName() << endl;
-        // cout << "ID: \t\t" << input.getId() << endl;
-        // call drop student function on that student
+        // cout << "Name: \t\t" << input.getFirstName() << " " <<
+        // input.getLastName() << endl; cout << "ID: \t\t" << input.getId() <<
+        // endl; call drop student function on that student
         cout << "Calling dropStudent(" << input << ")\n";
       }
       // quit
       else if (tolower(input[0]) == 'q') {
-      cout << "Goodbye\n";
-      isOpen = false; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
-      break;
+        cout << "Goodbye\n";
+        isOpen = false;  // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
+        break;
       }
     }
     // ASSIGNMENTS HANDLER
     else if (tolower(input[0]) == 'a') {
       cout << "List all the assignments in this course\n";
-      cout << "Assignment1 number Assignment1 name Assignment1 type Assignment1 weight Assignment1 average\n";
-      cout << "Assignment2 number Assignment2 name Assignment2 type Assignment2 weight Assignment2 average\n";
-      cout << "Assignment3 number Assignment3 name Assignment3 type Assignment3 weight Assignment3 average\n";
-      cout << "Assignment4 number Assignment4 name Assignment4 type Assignment4 weight Assignment4 average\n";
-      cout << "Assignment5 number Assignment5 name Assignment5 type Assignment5 weight Assignment5 average\n";
-      cout.width(6); cout << "\tADD Assignment " << right << "[A]\nREMOVE Assignment" << right << " [R]\n MODIFY Assignment"  << right << "[M]: ";
+      cout << "Assignment1 number Assignment1 name Assignment1 type "
+              "Assignment1 weight Assignment1 average\n";
+      cout << "Assignment2 number Assignment2 name Assignment2 type "
+              "Assignment2 weight Assignment2 average\n";
+      cout << "Assignment3 number Assignment3 name Assignment3 type "
+              "Assignment3 weight Assignment3 average\n";
+      cout << "Assignment4 number Assignment4 name Assignment4 type "
+              "Assignment4 weight Assignment4 average\n";
+      cout << "Assignment5 number Assignment5 name Assignment5 type "
+              "Assignment5 weight Assignment5 average\n";
+      cout.width(6);
+      cout << "\tADD Assignment " << right << "[A]\nREMOVE Assignment" << right
+           << " [R]\n MODIFY Assignment" << right << "[M]: ";
       cin >> input;
       // add assignment
       if (tolower(input[0]) == 'a') {
@@ -144,27 +156,26 @@ int main() {
         string aType = input;
         if (tolower(input[0]) == 'q') {
           cout << "assignment.type = Quiz;\n";
-        }
-        else if (tolower(input[0]) == 'l') {
+        } else if (tolower(input[0]) == 'l') {
           cout << "assignment.type = Lab;\n";
-        }
-        else if (tolower(input[0]) == 'e') {
+        } else if (tolower(input[0]) == 'e') {
           cout << "assignment.type = Extra;\n";
-        }
-        else {
+        } else {
           cout << "Invalid entry: " << input << endl;
           continue;
         }
         cout << "Assignment weight?: ";
         cin >> input;
         string aWeight = input;
-        cout << "Calling assignmentCreate(" << aName<< "," << aType << "," << aWeight <<");\n";
+        cout << "Calling assignmentCreate(" << aName << "," << aType << ","
+             << aWeight << ");\n";
       }
       // remove assignment
       else if (tolower(input[0]) == 'r') {
         cout << "Remove which assignment? [number]: ";
         cin >> input;
-        cout << "Calling assignmentRemove(" << input << ")\n";  // to replace with member function
+        cout << "Calling assignmentRemove(" << input
+             << ")\n";  // to replace with member function
         break;
       }
       // modify assignment
@@ -176,22 +187,22 @@ int main() {
       }
       // quit
       else if (tolower(input[0]) == 'q') {
-      cout << "Goodbye\n";
-      !isOpen; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
-      break;
+        cout << "Goodbye\n";
+        !isOpen;  // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
+        break;
       }
 
       // invalid
       else {
-      cout << "Invalid entry: " << input << endl;
-      continue;
+        cout << "Invalid entry: " << input << endl;
+        continue;
       }
     }
 
     // else invalid
     else {
-    cout << "Invalid entry: " << input << endl;
-    continue;
+      cout << "Invalid entry: " << input << endl;
+      continue;
     }
-  } // while course is open
+  }  // while course is open
 }

@@ -1,7 +1,7 @@
 #include "Database.h"
 
-#include <sqlite3.h>
 #include <iostream>
+#include <sqlite3.h>
 #include <string>
 #include <vector>
 
@@ -15,9 +15,9 @@ Database::Database(string filename) {
 
 Database::~Database() { sqlite3_close(db); }
 
-int callback(void* res, int columns, char** data, char**) {
-  vector<vector<string>>& results =
-      *(static_cast<vector<vector<string>>*>(res));
+int callback(void *res, int columns, char **data, char **) {
+  vector<vector<string>> &results =
+      *(static_cast<vector<vector<string>> *>(res));
   vector<string> row;
   for (int i = 0; i < columns; i++) {
     row.push_back(data[i] ? data[i] : "NULL");
