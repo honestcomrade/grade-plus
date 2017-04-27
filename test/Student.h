@@ -20,7 +20,9 @@ class Student {
   void setFirstName(string);
   void setLastName(string);
 
-  void save();
+  void update();
+    void remove();
+    void insert();
 
  private:
   string id;
