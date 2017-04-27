@@ -3,6 +3,8 @@
 
 #include <sstream>
 #include <string>
+#include <map>
+#include <vector>
 
 using namespace std;
 
@@ -11,14 +13,14 @@ Category::Category(int id, string name, int weight, Database db)
 
 Category::~Category() {}
 
-int Category::getId() { return id; }
+int Category::getId() const { return id; }
 
-string Category::getName() {
+string Category::getName() const {
   string copy(name);
   return copy;
 }
 
-int Category::getWeight() { return weight; }
+int Category::getWeight() const { return weight; }
 
 void Category::save() {
   string command = "save";
@@ -55,4 +57,18 @@ void Category::insert() {
   command << ");";
 
   db.execute(command.str());
+}
+
+map <int, Category> Category::read(Database& db) const {
+  map <int, Category> data;
+  vector <vector <string>> results;
+  
+  results = db.execute("SELECT * FROM categories;");
+  
+  for (vector<string> row : results) {
+    Category s(row[0], row[1], row[2], db);
+    data[s.getID()] = s;
+  }
+
+  return data;
 }

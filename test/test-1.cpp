@@ -24,7 +24,7 @@ int main() {
 
   // test writing Student to the database file
   cout << "Testing writing Student to the database file:\n\n";
-  s.save();
+  // s.save();
 
   string input;
   string openCourse;

@@ -7,6 +7,7 @@
 
 #include <sstream>
 #include <string>
+#include <map>
 
 using namespace std;
 
@@ -15,9 +16,9 @@ public:
   Category(int, string, int, Database);
   ~Category();
 
-  int getId();
-  int getWeight();
-  string getName();
+  int getId() const;
+  int getWeight() const;
+  string getName() const;
 
   void setId(int);
   void setName(string);
@@ -28,6 +29,8 @@ public:
   void insert();
   void update();
   void remove();
+
+  map <int, Category> read(Database&) const;
 
 private:
   int id;
