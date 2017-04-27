@@ -10,7 +10,6 @@ using namespace std;
 
 class Submitted {
 public:
-  // Constructor
   Submitted(int, int, string, double, Database db);
 
   // Getters
@@ -25,12 +24,12 @@ public:
   void setStudentId(string);
   void setPointsEarned(double);
 
-  // Database functions
+  // Database query commands
+  void insert();
   void update() const;
   void remove() const;
-  void insert() const;
 
-  // Static functions
+  // Static database query commands
   static void create(Database);
   static map<int, Submitted *> read(Database);
 

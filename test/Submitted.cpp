@@ -8,7 +8,6 @@
 
 using namespace std;
 
-// Constructor
 Submitted::Submitted(int id, int assignmentId, string studentId,
                      double pointsEarned, Database db)
     : id(id), assignmentId(assignmentId), studentId(studentId),
@@ -16,20 +15,35 @@ Submitted::Submitted(int id, int assignmentId, string studentId,
 
 // Getters
 int Submitted::getId() const { return id; }
+
 int Submitted::getAssignmentId() const { return assignmentId; }
+
 string Submitted::getStudentId() const { return studentId; }
+
 double Submitted::getPointsEarned() const { return pointsEarned; }
 
 // Setters
 void Submitted::setAssignmentId(int a_assignmentId) {
   assignmentId = a_assignmentId;
 }
+
 void Submitted::setStudentId(string a_studentId) { studentId = a_studentId; }
+
 void Submitted::setPointsEarned(double a_pointsEarned) {
   pointsEarned = a_pointsEarned;
 }
 
-// Database functions
+// Database query commands
+void Submitted::insert() {
+  stringstream command;
+  command << "INSERT INTO submittedAssignments VALUES (";
+  command << getAssignmentId() << ", ";
+  command << "'" << getStudentId() << "', ";
+  command << getPointsEarned() << ");";
+
+  db.execute(command.str());
+}
+
 void Submitted::update() const {
   stringstream command;
   command << "UPDATE submittedAssignments SET ";
@@ -40,34 +54,26 @@ void Submitted::update() const {
 
   db.execute(command.str());
 }
+
 void Submitted::remove() const {
   stringstream command;
   command << "DELETE FROM submittedAssignments WHERE id = " << getId() << ";";
 
   db.execute(command.str());
 }
-void Submitted::insert() const {
-  stringstream command;
-  command << "INSERT INTO submittedAssignments VALUES (";
-  command << getAssignmentId() << ", ";
-  command << "'" << getStudentId() << "', ";
-  command << getPointsEarned() << ");";
 
-  db.execute(command.str());
-}
-
-// Static functions
+// Static database query commands
 void Submitted::create(Database db) {
   string command = "CREATE TABLE IF NOT EXISTS submittedAssignments ("
-                   "assignmentId INTEGER (2) NOT NULL,"
-                   "studentId    TEXT (16)   NOT NULL,"
-                   "pointsEarned NUMERIC (4) NOT NULL"
+                   "    assignmentId INTEGER (2) NOT NULL,"
+                   "    studentId    TEXT (16)   NOT NULL,"
+                   "    pointsEarned NUMERIC (4) NOT NULL"
                    ");";
 
   db.execute(command);
 }
 
-map<int, Submitted *> Submitted::read(const Database &db) {
+map<int, Submitted *> Submitted::read(Database db) {
   map<int, Submitted *> data;
   vector<vector<string>> results;
 
