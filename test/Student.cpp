@@ -21,7 +21,7 @@ void Student::setId(string a_id) { id = a_id; }
 
 void Student::setFirstName(string a_firstName) { firstName = a_firstName; }
 
-void Student::setLastName(string a_lastName) { firstName = a_firstName; }
+void Student::setLastName(string a_lastName) { lastName = a_lastName; }
 
 // Database query commands
 void Student::insert() {
@@ -35,7 +35,7 @@ void Student::insert() {
   db.execute(command.str());
 }
 
-void Student::update() {
+void Student::update() const {
   stringstream command;
   command << "UPDATE students SET ";
   command << "firstName = '" << getFirstName() << "', ";
@@ -46,7 +46,7 @@ void Student::update() {
   db.execute(command.str());
 }
 
-void Student::remove() {
+void Student::remove() const {
   stringstream command;
   command << "DELETE from students WHERE id = ";
   command << "'" << getId() << "'";
