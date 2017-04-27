@@ -5,3 +5,6 @@ all: test1.out
 
 test1.out:
 	$(CXX) $(CPPFLAGS) *.cpp -o $@
+
+clean:
+	rm *.out
