@@ -19,15 +19,18 @@ int callback(void *res, int columns, char **data, char **) {
   vector<vector<string>> &results =
       *(static_cast<vector<vector<string>> *>(res));
   vector<string> row;
+
   for (int i = 0; i < columns; i++) {
     row.push_back(data[i] ? data[i] : "NULL");
     cout << data[i] << " ";
   }
+
   results.push_back(row);
+
   return 0;
 }
 
-vector<vector<string>> Database::execute(string command) {
+vector<vector<string>> Database::execute(string command) const {
   cout << "Executing command: " << command << endl;
   vector<vector<string>> results;
   sqlite3_exec(db,              /* An open database */

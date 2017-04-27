@@ -8,13 +8,13 @@
 using namespace std;
 
 class Database {
- public:
+public:
   Database(string);
   ~Database();
 
-  vector<vector<string>> execute(string);
+  vector<vector<string>> execute(string) const;
 
- private:
+private:
   sqlite3 *db;
 };
 

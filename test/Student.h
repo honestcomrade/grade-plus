@@ -8,7 +8,7 @@
 using namespace std;
 
 class Student {
- public:
+public:
   Student(string, string, string, Database);
   ~Student();
 
@@ -21,10 +21,10 @@ class Student {
   void setLastName(string);
 
   void update();
-    void remove();
-    void insert();
+  void remove();
+  void insert();
 
- private:
+private:
   string id;
   string firstName;
   string lastName;
