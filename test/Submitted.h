@@ -1,5 +1,5 @@
-#ifndef STUDENT_H
-#define STUDENT_H
+#ifndef SUBMITTED_H
+#define SUBMITTED_H
 
 #include "Database.h"
 
@@ -7,26 +7,14 @@
 
 using namespace std;
 
-class Student {
+class Submitted {
  public:
-  Student(string, string, string, Database);
-  ~Student();
-
-  string getId();
-  string getFirstName();
-  string getLastName();
-
-  void setId(string);
-  void setFirstName(string);
-  void setLastName(string);
-
-  void save();
+  Submitted();
+  ~Submitted();
 
  private:
-  string id;
-  string firstName;
-  string lastName;
+  int id;
   Database db;
 };
 
-#endif
+#endif // SUBMITTED_H
