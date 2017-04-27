@@ -5,37 +5,39 @@
 
 #include "Database.h"
 
-#include <sstream>
-#include <string>
 #include <map>
+#include <string>
 
 using namespace std;
 
 class Category {
 public:
   Category(int, string, int, Database);
-  ~Category();
 
+  // Getters
   int getId() const;
-  int getWeight() const;
   string getName() const;
+  int getWeight() const;
 
-  void setId(int);
+  // Setters
+  // NOTE: `id` cannot change externally
   void setName(string);
   void setWeight(int);
 
-  // database query commands
-  void save();
+  // Database query commands
   void insert();
-  void update();
-  void remove();
+  void update() const;
+  void remove() const;
 
-  map <int, Category> read(Database&) const;
+  // Create and read database table
+  static void create(Database);
+  static map<int, Category *> read(Database);
 
 private:
   int id;
   string name;
   int weight;
+
   Database db;
 };
 

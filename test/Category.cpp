@@ -1,73 +1,78 @@
 #include "Category.h"
 #include "Database.h"
 
+#include <map>
 #include <sstream>
 #include <string>
-#include <map>
 #include <vector>
 
 using namespace std;
 
 Category::Category(int id, string name, int weight, Database db)
-    : id(id), weight(weight), name(name), db(db) {}
+    : id(id), name(name), weight(weight), db(db) {}
 
-Category::~Category() {}
-
+// Getters
 int Category::getId() const { return id; }
 
-string Category::getName() const {
-  string copy(name);
-  return copy;
-}
+string Category::getName() const { return name; }
 
 int Category::getWeight() const { return weight; }
 
-void Category::save() {
-  string command = "save";
-  db.execute(command);
-}
+// Setters
+void Category::setName(string a_name) { name = a_name; }
 
-void Category::update() {
-  stringstream command;
-  command << "UPDATE students SET ";
-  command << "id = '" << getId() << "', ";
-  command << "weight = '" << getWeight() << "', ";
-  command << "name = '" << getName() << "' ";
-  command << "WHERE id = '" << getId() << "'";
-  command << ";";
+void Category::setWeight(int a_weight) { weight = a_weight; }
 
-  db.execute(command.str());
-}
-
-void Category::remove() {
-  stringstream command;
-  command << "DELETE from students WHERE id = ";
-  command << "'" << getId() << "'";
-  command << ";";
-
-  db.execute(command.str());
-}
-
+// Database query commands
 void Category::insert() {
   stringstream command;
-  command << "INSERT into students VALUES (";
-  command << getId() << ", ";
+  command << "INSERT INTO categories VALUES (";
+  command << "'" << getName() << "', ";
   command << getWeight() << ", ";
-  command << getName() << ", ";
   command << ");";
 
   db.execute(command.str());
 }
 
-map <int, Category> Category::read(Database& db) const {
-  map <int, Category> data;
-  vector <vector <string>> results;
-  
+// Static database query commands
+void Category::update() const {
+  stringstream command;
+  command << "UPDATE categories SET ";
+  command << "name = '" << getName() << "', ";
+  command << "weight = " << getWeight() << " ";
+  command << "WHERE id = " << getId() << ";";
+
+  db.execute(command.str());
+}
+
+void Category::remove() const {
+  stringstream command;
+  command << "DELETE FROM categories WHERE id = " << getId() << ";";
+
+  db.execute(command.str());
+}
+
+// Static database query commands
+void Category::create(Database db) {
+  string command = "CREATE TABLE IF NOT EXISTS categories ("
+                   "    name   TEXT (50)   UNIQUE"
+                   "                       NOT NULL,"
+                   "    weight INTEGER (1) NOT NULL"
+                   ");";
+
+  db.execute(command);
+}
+
+map<int, Category *> Category::read(Database db) {
+  map<int, Category *> data;
+  vector<vector<string>> results;
+
   results = db.execute("SELECT * FROM categories;");
-  
+
   for (vector<string> row : results) {
-    Category s(row[0], row[1], row[2], db);
-    data[s.getID()] = s;
+    int id = stoi(row[0]);
+
+    data[id] = new Category(id, row[1], stoi(row[2]), db);
   }
 
   return data;
