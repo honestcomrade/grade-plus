@@ -1,17 +1,17 @@
-// Category is the table of all assignments that are assigned 
+// Category is the table of all assignments that are assigned
 // - no student pair yet
 #ifndef Category_H
 #define Category_H
 
 #include "Database.h"
 
-#include <string>
 #include <sstream>
+#include <string>
 
 using namespace std;
 
 class Category {
- public:
+public:
   Category(int, string, int, Database);
   ~Category();
 
@@ -22,14 +22,14 @@ class Category {
   void setId(int);
   void setName(string);
   void setWeight(int);
-  
+
   // database query commands
   void save();
   void insert();
   void update();
   void remove();
 
- private:
+private:
   int id;
   string name;
   int weight;
