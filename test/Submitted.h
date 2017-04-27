@@ -10,7 +10,7 @@ using namespace std;
 
 class Submitted {
 public:
-  Submitted(int, int, string, double, Database db);
+  Submitted(int, int, string, double, Database);
 
   // Getters
   int getId() const;

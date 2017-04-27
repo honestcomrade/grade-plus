@@ -10,25 +10,32 @@ using namespace std;
 class Student {
 public:
   Student(string, string, string, Database);
-  ~Student();
 
-  string getId();
-  string getFirstName();
-  string getLastName();
+  // Getters
+  string getId() const;
+  string getFirstName() const;
+  string getLastName() const;
 
+  // Setters
   void setId(string);
   void setFirstName(string);
   void setLastName(string);
 
-  void update();
-  void remove();
+  // Database query commands
   void insert();
+  void update() const;
+  void remove() const;
+
+  // Static database query commands
+  static void create(Database);
+  static map<int, Student *> read(Database);
 
 private:
   string id;
   string firstName;
   string lastName;
+
   Database db;
 };
 
-#endif
+#endif // STUDENT_H
