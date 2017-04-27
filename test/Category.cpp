@@ -2,6 +2,7 @@
 #include "Database.h"
 
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -28,16 +29,34 @@ void Category::save() {
   db.execute(command);
 }
 
+void Category::update() {
+    stringstream command;
+    command << "UPDATE students SET ";
+    command << "id = '" << getId() << "', ";
+    command << "weight = '" << getWeight() << "', ";
+    command << "name = '" << getName() << "' ";
+    command << "WHERE id = '" << getId() << "'";
+    command << ";";
+    
+    db.execute(command.str());
+}
 
-Category(int, string, int, Database);
-  ~Category();
+void Category::remove() {
+    stringstream command;
+    command << "DELETE from students WHERE id = ";
+    command << "'" << getId() << "'";
+    command << ";";
+    
+    db.execute(command.str());
+}
 
-  int getId();
-  int getWeight();
-  string getName();
-
-  void setId(int);
-  void setName(string);
-  void setWeight(int);
-  
-  void save();
+void Category::insert() {
+    stringstream command;
+    command << "INSERT into students VALUES (";
+    command << getId() << ", ";
+    command << getWeight() << ", ";
+    command << getName() << ", ";
+    command << ");";
+    
+    db.execute(command.str());
+}

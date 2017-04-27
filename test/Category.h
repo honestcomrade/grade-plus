@@ -6,6 +6,7 @@
 #include "Database.h"
 
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -22,7 +23,11 @@ class Category {
   void setName(string);
   void setWeight(int);
   
+  // database query commands
   void save();
+  void insert();
+  void update();
+  void remove();
 
  private:
   int id;
