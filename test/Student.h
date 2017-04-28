@@ -29,7 +29,7 @@ public:
 
   // Static database query commands
   static void create(Database);
-  static map<int, Student *> read(Database);
+  static map<string, Student *> read(Database);
 
 private:
   string id;
