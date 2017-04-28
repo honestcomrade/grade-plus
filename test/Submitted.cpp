@@ -36,10 +36,13 @@ void Submitted::setPointsEarned(double a_pointsEarned) {
 // Database query commands
 void Submitted::insert() {
   stringstream command;
-  command << "INSERT INTO submittedAssignments VALUES (";
+  command << "INSERT INTO submittedAssignments ";
+  command << "(assignmentId, studentId, pointsEarned) ";
+  command << "VALUES (";
   command << getAssignmentId() << ", ";
   command << "'" << getStudentId() << "', ";
-  command << getPointsEarned() << ");";
+  command << getPointsEarned();
+  command << ");";
 
   db.execute(command.str());
 }
@@ -50,7 +53,8 @@ void Submitted::update() const {
   command << "assignmentId = " << getAssignmentId() << ", ";
   command << "studentId = '" << getStudentId() << "', ";
   command << "pointsEarned = " << getPointsEarned() << " ";
-  command << "WHERE id = " << getId() << ";";
+  command << "WHERE id = " << getId();
+  command << ";";
 
   db.execute(command.str());
 }
@@ -65,6 +69,7 @@ void Submitted::remove() const {
 // Static database query commands
 void Submitted::create(Database db) {
   string command = "CREATE TABLE IF NOT EXISTS submittedAssignments ("
+                   "    id           INTEGER     PRIMARY KEY,"
                    "    assignmentId INTEGER (2) NOT NULL,"
                    "    studentId    TEXT (16)   NOT NULL,"
                    "    pointsEarned NUMERIC (4) NOT NULL"
