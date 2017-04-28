@@ -39,7 +39,8 @@ void Assignment::insert() {
   command << "VALUES (";
   command << getCategoryId() << ", ";
   command << "'" << getName() << "', ";
-  command << getPointsPossible() << ");";
+  command << getPointsPossible();
+  command << ");";
 
   db.execute(command.str());
 }
@@ -50,14 +51,17 @@ void Assignment::update() const {
   command << "categoryId = " << getCategoryId() << ", ";
   command << "name = '" << getName() << "', ";
   command << "pointsPossible = " << getPointsPossible() << " ";
-  command << "WHERE id = " << getId() << ";";
+  command << "WHERE id = " << getId();
+  command << ";";
 
   db.execute(command.str());
 }
 
 void Assignment::remove() const {
   stringstream command;
-  command << "DELETE FROM assignments WHERE id = " << getId() << ";";
+  command << "DELETE FROM assignments WHERE ";
+  command << "id = " << getId();
+  command << ";";
 
   db.execute(command.str());
 }

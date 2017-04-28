@@ -61,7 +61,9 @@ void Submitted::update() const {
 
 void Submitted::remove() const {
   stringstream command;
-  command << "DELETE FROM submittedAssignments WHERE id = " << getId() << ";";
+  command << "DELETE FROM submittedAssignments WHERE ";
+  command << "id = " << getId();
+  command << ";";
 
   db.execute(command.str());
 }

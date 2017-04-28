@@ -48,8 +48,8 @@ void Student::update() const {
 
 void Student::remove() const {
   stringstream command;
-  command << "DELETE from students WHERE id = ";
-  command << "'" << getId() << "'";
+  command << "DELETE from students WHERE ";
+  command << "id = '" << getId() << "'";
   command << ";";
 
   db.execute(command.str());
