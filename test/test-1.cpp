@@ -11,20 +11,9 @@ int main() {
   // main prompt
   bool isOpen = true;  // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
 
-  // test instantiation of a Database object.
-  cout << "Testing instantiation of a Database object:\n";
-  Database db("test-1.sqlite");
-
-  // test instantiation of a Student object.
-  cout << "Testing instantiation of a Student object:\n";
-  Student s("1234567", "Jamie", "Green", db);
-
-  cout << "Name: \t\t" << s.getFirstName() << " " << s.getLastName() << endl;
-  cout << "ID: \t\t" << s.getId() << endl;
-
   // test writing Student to the database file
   cout << "Testing writing Student to the database file:\n\n";
-  // s.save();
+  s.insert();
 
   string input;
   string openCourse;
