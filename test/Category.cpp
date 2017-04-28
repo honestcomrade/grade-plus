@@ -26,7 +26,9 @@ void Category::setWeight(int a_weight) { weight = a_weight; }
 // Database query commands
 void Category::insert() {
   stringstream command;
-  command << "INSERT INTO categories VALUES (";
+  command << "INSERT INTO categories ";
+  command << "(name, weight) ";
+  command << "VALUES (";
   command << "'" << getName() << "', ";
   command << getWeight() << ", ";
   command << ");";
@@ -40,14 +42,17 @@ void Category::update() const {
   command << "UPDATE categories SET ";
   command << "name = '" << getName() << "', ";
   command << "weight = " << getWeight() << " ";
-  command << "WHERE id = " << getId() << ";";
+  command << "WHERE id = " << getId();
+  command << ";";
 
   db.execute(command.str());
 }
 
 void Category::remove() const {
   stringstream command;
-  command << "DELETE FROM categories WHERE id = " << getId() << ";";
+  command << "DELETE FROM categories WHERE ";
+  command << "id = " << getId();
+  command << ";";
 
   db.execute(command.str());
 }
@@ -55,6 +60,7 @@ void Category::remove() const {
 // Static database query commands
 void Category::create(Database db) {
   string command = "CREATE TABLE IF NOT EXISTS categories ("
+                   "    id     INTEGER     PRIMARY KEY,"
                    "    name   TEXT (50)   UNIQUE"
                    "                       NOT NULL,"
                    "    weight INTEGER (1) NOT NULL"
