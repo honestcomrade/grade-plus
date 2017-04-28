@@ -68,12 +68,12 @@ void Assignment::remove() const {
 
 // Static database query commands
 void Assignment::create(Database db) {
-  string command = "CREATE TABLE IF NOT EXISTS assignments ("
-                   "    id             INTEGER     PRIMARY KEY,"
-                   "    categoryId     INTEGER (1) NOT NULL,"
-                   "    name           TEXT (150)  NOT NULL"
-                   "                               UNIQUE,"
-                   "    pointsPossible NUMERIC (4) NOT NULL"
+  string command = "CREATE TABLE IF NOT EXISTS assignments (\n"
+                   "    id             INTEGER     PRIMARY KEY,\n"
+                   "    categoryId     INTEGER (1) NOT NULL,\n"
+                   "    name           TEXT (150)  NOT NULL\n"
+                   "                               UNIQUE,\n"
+                   "    pointsPossible NUMERIC (4) NOT NULL\n"
                    ");";
 
   db.execute(command);

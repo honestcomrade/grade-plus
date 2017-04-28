@@ -70,11 +70,11 @@ void Submitted::remove() const {
 
 // Static database query commands
 void Submitted::create(Database db) {
-  string command = "CREATE TABLE IF NOT EXISTS submittedAssignments ("
-                   "    id           INTEGER     PRIMARY KEY,"
-                   "    assignmentId INTEGER (2) NOT NULL,"
-                   "    studentId    TEXT (16)   NOT NULL,"
-                   "    pointsEarned NUMERIC (4) NOT NULL"
+  string command = "CREATE TABLE IF NOT EXISTS submittedAssignments (\n"
+                   "    id           INTEGER     PRIMARY KEY,\n"
+                   "    assignmentId INTEGER (2) NOT NULL,\n"
+                   "    studentId    TEXT (16)   NOT NULL,\n"
+                   "    pointsEarned NUMERIC (4) NOT NULL\n"
                    ");";
 
   db.execute(command);

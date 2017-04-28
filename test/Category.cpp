@@ -59,11 +59,11 @@ void Category::remove() const {
 
 // Static database query commands
 void Category::create(Database db) {
-  string command = "CREATE TABLE IF NOT EXISTS categories ("
-                   "    id     INTEGER     PRIMARY KEY,"
-                   "    name   TEXT (50)   UNIQUE"
-                   "                       NOT NULL,"
-                   "    weight INTEGER (1) NOT NULL"
+  string command = "CREATE TABLE IF NOT EXISTS categories (\n"
+                   "    id     INTEGER     PRIMARY KEY,\n"
+                   "    name   TEXT (50)   UNIQUE\n"
+                   "                       NOT NULL,\n"
+                   "    weight INTEGER (1) NOT NULL\n"
                    ");";
 
   db.execute(command);
