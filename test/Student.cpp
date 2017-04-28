@@ -54,3 +54,31 @@ void Student::remove() const {
 
   db.execute(command.str());
 }
+
+// Static database query commands
+void Student::create(Database db) {
+  string command = "CREATE TABLE IF NOT EXISTS students ("
+                   "    id        TEXT (16) PRIMARY KEY"
+                   "                        NOT NULL"
+                   "                        UNIQUE,"
+                   "    firstName TEXT (36) NOT NULL,"
+                   "    lastName  TEXT (36) NOT NULL"
+                   ");";
+
+  db.execute(command);
+}
+
+map<string, Student *> Student::read(Database db) {
+  map<string, Student *> data;
+  vector<vector<string>> results;
+
+  results = db.execute("SELECT * FROM students;");
+
+  for (vector<string> row : results) {
+    string id = row[0];
+
+    data[id] = new Student(id, row[1], row[2], db);
+  }
+
+  return data;
+}
