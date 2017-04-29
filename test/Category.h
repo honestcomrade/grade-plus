@@ -12,7 +12,7 @@ using namespace std;
 
 class Category {
 public:
-  Category(int, string, int, Database);
+  Category(int, string, int, Database &);
 
   // Getters
   int getId() const;
@@ -30,15 +30,15 @@ public:
   void remove() const;
 
   // Create and read database table
-  static void create(Database);
-  static map<int, Category *> read(Database);
+  static void create(Database &);
+  static map<int, Category *> read(Database &);
 
 private:
   int id;
   string name;
   int weight;
 
-  Database db;
+  Database &db;
 };
 
 #endif

@@ -10,7 +10,7 @@ using namespace std;
 
 class Assignment {
 public:
-  Assignment(int, int, string, double, Database);
+  Assignment(int, int, string, double, Database &);
 
   // Getters
   int getId() const;
@@ -30,8 +30,8 @@ public:
   void remove() const;
 
   // Static database query commands
-  static void create(Database);
-  static map<int, Assignment *> read(Database);
+  static void create(Database &);
+  static map<int, Assignment *> read(Database &);
 
 private:
   int id;
@@ -39,7 +39,7 @@ private:
   string name;
   double pointsPossible;
 
-  Database db;
+  Database &db;
 };
 
 #endif // ASSIGNMENT_H

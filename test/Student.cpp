@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Student::Student(string id, string firstName, string lastName, Database db)
+Student::Student(string id, string firstName, string lastName, Database &db)
     : id(id), firstName(firstName), lastName(lastName), db(db) {}
 
 // Getters
@@ -56,7 +56,7 @@ void Student::remove() const {
 }
 
 // Static database query commands
-void Student::create(Database db) {
+void Student::create(Database &db) {
   string command = "CREATE TABLE IF NOT EXISTS students (\n"
                    "    id        TEXT (16) PRIMARY KEY\n"
                    "                        NOT NULL\n"
@@ -68,7 +68,7 @@ void Student::create(Database db) {
   db.execute(command);
 }
 
-map<string, Student *> Student::read(Database db) {
+map<string, Student *> Student::read(Database &db) {
   map<string, Student *> data;
   vector<vector<string>> results;
 

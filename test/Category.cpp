@@ -8,7 +8,7 @@
 
 using namespace std;
 
-Category::Category(int id, string name, int weight, Database db)
+Category::Category(int id, string name, int weight, Database &db)
     : id(id), name(name), weight(weight), db(db) {}
 
 // Getters
@@ -58,7 +58,7 @@ void Category::remove() const {
 }
 
 // Static database query commands
-void Category::create(Database db) {
+void Category::create(Database &db) {
   string command = "CREATE TABLE IF NOT EXISTS categories (\n"
                    "    id     INTEGER     PRIMARY KEY,\n"
                    "    name   TEXT (50)   UNIQUE\n"
@@ -69,7 +69,7 @@ void Category::create(Database db) {
   db.execute(command);
 }
 
-map<int, Category *> Category::read(Database db) {
+map<int, Category *> Category::read(Database &db) {
   map<int, Category *> data;
   vector<vector<string>> results;
 

@@ -10,7 +10,7 @@ using namespace std;
 
 class Submitted {
 public:
-  Submitted(int, int, string, double, Database);
+  Submitted(int, int, string, double, Database &);
 
   // Getters
   int getId() const;
@@ -30,8 +30,8 @@ public:
   void remove() const;
 
   // Static database query commands
-  static void create(Database);
-  static map<int, Submitted *> read(Database);
+  static void create(Database &);
+  static map<int, Submitted *> read(Database &);
 
 private:
   int id;
@@ -39,7 +39,7 @@ private:
   string studentId;
   double pointsEarned;
 
-  Database db;
+  Database &db;
 };
 
 #endif // SUBMITTED_H

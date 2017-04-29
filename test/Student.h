@@ -10,7 +10,7 @@ using namespace std;
 
 class Student {
 public:
-  Student(string, string, string, Database);
+  Student(string, string, string, Database &);
 
   // Getters
   string getId() const;
@@ -28,15 +28,15 @@ public:
   void remove() const;
 
   // Static database query commands
-  static void create(Database);
-  static map<string, Student *> read(Database);
+  static void create(Database &);
+  static map<string, Student *> read(Database &);
 
 private:
   string id;
   string firstName;
   string lastName;
 
-  Database db;
+  Database &db;
 };
 
 #endif // STUDENT_H
