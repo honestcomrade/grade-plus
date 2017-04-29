@@ -22,7 +22,7 @@ int callback(void *res, int columns, char **data, char **) {
 
   for (int i = 0; i < columns; i++) {
     row.push_back(data[i] ? data[i] : "NULL");
-    cout << data[i] << " ";
+    cout << data[i] << ", ";
   }
 
   results.push_back(row);
@@ -31,13 +31,24 @@ int callback(void *res, int columns, char **data, char **) {
 }
 
 vector<vector<string>> Database::execute(string command) const {
-  cout << "Executing command: " << command << endl;
+  cout << "Executing SQL: " << command << endl;
+  cout << "Data: ";
   vector<vector<string>> results;
-  sqlite3_exec(db,              /* An open database */
-               command.c_str(), /* SQL to be evaluated */
-               callback,        /* Callback function */
-               &results,        /* 1st argument to callback */
-               0                /* Error msg written here */
-               );
+  char *err;
+  int status = sqlite3_exec(db,              /* An open database */
+                            command.c_str(), /* SQL to be evaluated */
+                            callback,        /* Callback function */
+                            &results,        /* 1st argument to callback */
+                            &err             /* Error msg written here */
+                            );
+
+  cout << endl;
+  cout << "DB status: " << status;
+  if (err) {
+    cout << ", Error: " << err;
+    sqlite3_free(err);
+  }
+  cout << endl;
+
   return results;
 }
