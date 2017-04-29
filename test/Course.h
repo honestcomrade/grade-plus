@@ -15,6 +15,8 @@ class Course {
 public:
   Course(string);
 
+  string getName() const;
+
   map<int, Assignment *> assignments;
   map<int, Category *> catagories;
   map<string, Student *> students;

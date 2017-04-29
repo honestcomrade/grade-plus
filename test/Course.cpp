@@ -18,3 +18,5 @@ Course::Course(string name) : name(name), db(Database(name.append(".sqlite"))) {
   students = Student::read(db);
   submitted = Submitted::read(db);
 }
+
+string Course::getName() const { return name; }
