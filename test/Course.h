@@ -18,7 +18,7 @@ public:
   string getName() const;
 
   map<int, Assignment *> assignments;
-  map<int, Category *> catagories;
+  map<int, Category *> categories;
   map<string, Student *> students;
   map<int, Submitted *> submitted;
 

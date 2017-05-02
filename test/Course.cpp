@@ -14,7 +14,7 @@ Course::Course(string name) : name(name), db(Database(name.append(".sqlite"))) {
   Submitted::create(db);
 
   assignments = Assignment::read(db);
-  catagories = Category::read(db);
+  categories = Category::read(db);
   students = Student::read(db);
   submitted = Submitted::read(db);
 }
