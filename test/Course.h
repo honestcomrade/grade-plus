@@ -13,7 +13,10 @@ using namespace std;
 
 class Course {
 public:
+  Course();
   Course(string);
+    
+  void load(string);
 
   string getName() const;
 
