@@ -34,6 +34,8 @@ void Category::insert() {
   command << ");";
 
   db.execute(command.str());
+
+  id = db.lastInsertRowid();
 }
 
 // Static database query commands

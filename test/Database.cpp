@@ -52,3 +52,7 @@ vector<vector<string>> Database::execute(string command) const {
 
   return results;
 }
+
+int Database::lastInsertRowid() const {
+  return sqlite3_last_insert_rowid(db);
+}

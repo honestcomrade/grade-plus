@@ -45,6 +45,8 @@ void Submitted::insert() {
   command << ");";
 
   db.execute(command.str());
+
+  id = db.lastInsertRowid();
 }
 
 void Submitted::update() const {

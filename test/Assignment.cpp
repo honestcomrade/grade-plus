@@ -43,6 +43,8 @@ void Assignment::insert() {
   command << ");";
 
   db.execute(command.str());
+
+  id = db.lastInsertRowid();
 }
 
 void Assignment::update() const {

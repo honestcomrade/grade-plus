@@ -13,6 +13,7 @@ public:
   ~Database();
 
   vector<vector<string>> execute(string) const;
+  int lastInsertRowid() const;
 
 private:
   sqlite3 *db;
