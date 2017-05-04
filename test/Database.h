@@ -8,16 +8,16 @@
 using namespace std;
 
 class Database {
-public:
+ public:
   Database();
   Database(string);
   ~Database();
-    
+
   void load(string);
 
   vector<vector<string>> execute(string) const;
 
-private:
+ private:
   sqlite3 *db;
 };
 
