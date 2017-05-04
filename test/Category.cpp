@@ -30,7 +30,7 @@ void Category::insert() {
   command << "(name, weight) ";
   command << "VALUES (";
   command << "'" << getName() << "', ";
-  command << getWeight() << ", ";
+  command << getWeight();
   command << ");";
 
   db.execute(command.str());
