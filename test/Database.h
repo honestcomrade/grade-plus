@@ -9,8 +9,11 @@ using namespace std;
 
 class Database {
 public:
+  Database();
   Database(string);
   ~Database();
+    
+  void load(string);
 
   vector<vector<string>> execute(string) const;
   int lastInsertRowid() const;

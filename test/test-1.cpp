@@ -1,5 +1,9 @@
+#include "Assignment.h"
+#include "Category.h"
+#include "Course.h"
 #include "Database.h"
 #include "Student.h"
+#include "Submitted.h"
 
 #include <iomanip>
 #include <iostream>
@@ -10,10 +14,7 @@ using namespace std;
 int main() {
   // main prompt
   bool isOpen = true;  // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
-
-  // test writing Student to the database file
-  cout << "Testing writing Student to the database file:\n\n";
-  s.insert();
+  Course course;
 
   string input;
   string openCourse;
@@ -32,10 +33,7 @@ int main() {
       cout << "Which Course?: ";
       cin >> input;
       cout << "Opening Course: " << input << "...\n";
-      // open the course with openCourse function
-      openCourse = input;
-      cout << "Calling course.open(" << openCourse << ");\n";
-
+      course.load(input);
       break;
     }
 
@@ -49,15 +47,14 @@ int main() {
       cin >> input;
       string cSubj = input;
       cout << "Creating Course: " << cName << " - " << cSubj << endl;
-      // call the createcourse function
-      cout << "createCourse(" << cName << "," << cSubj << ");\n";
+      course.load(cName);
       break;
     }
 
     // quit
     else if (tolower(input[0]) == 'q') {
       cout << "Goodbye\n";
-      !isOpen;  // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
+      isOpen = false;
       break;
     }
 
@@ -98,6 +95,7 @@ int main() {
         string stuID = input;
         cout << "Student Name: " << stuFirst << " " << stuLast
              << " Student ID: " << stuID << endl;
+
       }
       // drop student
       else if (tolower(input[0]) == 'r') {

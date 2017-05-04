@@ -1,19 +1,19 @@
 #include "Database.h"
 
-#include <iostream>
 #include <sqlite3.h>
+#include <iostream>
 #include <string>
 #include <vector>
 
 using namespace std;
 
-Database::Database(string filename) {
-  char filenameCharArray[100];
-  strcpy(filenameCharArray, filename.c_str());
-  sqlite3_open(filenameCharArray, &db);
-}
+Database::Database() {}
+
+Database::Database(string filename) { load(filename); }
 
 Database::~Database() { sqlite3_close(db); }
+
+void Database::load(string filename) { sqlite3_open(filename.c_str(), &db); }
 
 int callback(void *res, int columns, char **data, char **) {
   vector<vector<string>> &results =

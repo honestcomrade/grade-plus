@@ -10,8 +10,11 @@ using namespace std;
 
 Submitted::Submitted(int id, int assignmentId, string studentId,
                      double pointsEarned, Database &db)
-    : id(id), assignmentId(assignmentId), studentId(studentId),
-      pointsEarned(pointsEarned), db(db) {}
+    : id(id),
+      assignmentId(assignmentId),
+      studentId(studentId),
+      pointsEarned(pointsEarned),
+      db(db) {}
 
 // Getters
 int Submitted::getId() const { return id; }
@@ -72,12 +75,13 @@ void Submitted::remove() const {
 
 // Static database query commands
 void Submitted::create(Database &db) {
-  string command = "CREATE TABLE IF NOT EXISTS submittedAssignments (\n"
-                   "    id           INTEGER     PRIMARY KEY,\n"
-                   "    assignmentId INTEGER (2) NOT NULL,\n"
-                   "    studentId    TEXT (16)   NOT NULL,\n"
-                   "    pointsEarned NUMERIC (4) NOT NULL\n"
-                   ");";
+  string command =
+      "CREATE TABLE IF NOT EXISTS submittedAssignments (\n"
+      "    id           INTEGER     PRIMARY KEY,\n"
+      "    assignmentId INTEGER (2) NOT NULL,\n"
+      "    studentId    TEXT (16)   NOT NULL,\n"
+      "    pointsEarned NUMERIC (4) NOT NULL\n"
+      ");";
 
   db.execute(command);
 }
