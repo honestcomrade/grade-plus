@@ -20,3 +20,5 @@ Course::Course(string name) : name(name), db(Database(name.append(".sqlite"))) {
 }
 
 string Course::getName() const { return name; }
+
+Database &Course::getDb() { return db; }

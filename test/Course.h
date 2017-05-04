@@ -16,6 +16,7 @@ public:
   Course(string);
 
   string getName() const;
+  Database &getDb();
 
   map<int, Assignment *> assignments;
   map<int, Category *> categories;
