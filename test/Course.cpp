@@ -7,13 +7,14 @@
 
 #include <string>
 
-Course::Course(){};
+Course::Course() {}
 
 Course::Course(string name) { load(name); }
 
 void Course::load(string name) {
-  name = name;
-  db = Database(name.append(".sqlite"));
+  this->name = name;
+  db.load(name.append(".sqlite"));
+
   Assignment::create(db);
   Category::create(db);
   Student::create(db);

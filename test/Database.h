@@ -19,7 +19,7 @@ public:
   int lastInsertRowid() const;
 
 private:
-  sqlite3 *db;
+  sqlite3 *db = 0;
 };
 
 #endif
