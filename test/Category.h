@@ -11,7 +11,7 @@
 using namespace std;
 
 class Category {
- public:
+public:
   Category(int, string, int, Database &);
 
   // Getters
@@ -33,7 +33,7 @@ class Category {
   static void create(Database &);
   static map<int, Category *> read(Database &);
 
- private:
+private:
   int id;
   string name;
   int weight;

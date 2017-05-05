@@ -10,11 +10,8 @@ using namespace std;
 
 Assignment::Assignment(int id, int categoryId, string name,
                        double pointsPossible, Database &db)
-    : id(id),
-      categoryId(categoryId),
-      name(name),
-      pointsPossible(pointsPossible),
-      db(db) {}
+    : id(id), categoryId(categoryId), name(name),
+      pointsPossible(pointsPossible), db(db) {}
 
 // Getters
 int Assignment::getId() const { return id; }
@@ -73,14 +70,13 @@ void Assignment::remove() const {
 
 // Static database query commands
 void Assignment::create(Database &db) {
-  string command =
-      "CREATE TABLE IF NOT EXISTS assignments (\n"
-      "    id             INTEGER     PRIMARY KEY,\n"
-      "    categoryId     INTEGER (1) NOT NULL,\n"
-      "    name           TEXT (150)  NOT NULL\n"
-      "                               UNIQUE,\n"
-      "    pointsPossible NUMERIC (4) NOT NULL\n"
-      ");";
+  string command = "CREATE TABLE IF NOT EXISTS assignments (\n"
+                   "    id             INTEGER     PRIMARY KEY,\n"
+                   "    categoryId     INTEGER (1) NOT NULL,\n"
+                   "    name           TEXT (150)  NOT NULL\n"
+                   "                               UNIQUE,\n"
+                   "    pointsPossible NUMERIC (4) NOT NULL\n"
+                   ");";
 
   db.execute(command);
 }

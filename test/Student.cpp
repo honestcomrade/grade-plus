@@ -57,14 +57,13 @@ void Student::remove() const {
 
 // Static database query commands
 void Student::create(Database &db) {
-  string command =
-      "CREATE TABLE IF NOT EXISTS students (\n"
-      "    id        TEXT (16) PRIMARY KEY\n"
-      "                        NOT NULL\n"
-      "                        UNIQUE,\n"
-      "    firstName TEXT (36) NOT NULL,\n"
-      "    lastName  TEXT (36) NOT NULL\n"
-      ");";
+  string command = "CREATE TABLE IF NOT EXISTS students (\n"
+                   "    id        TEXT (16) PRIMARY KEY\n"
+                   "                        NOT NULL\n"
+                   "                        UNIQUE,\n"
+                   "    firstName TEXT (36) NOT NULL,\n"
+                   "    lastName  TEXT (36) NOT NULL\n"
+                   ");";
 
   db.execute(command);
 }

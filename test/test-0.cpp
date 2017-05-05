@@ -1,5 +1,5 @@
-#include "Course.h"
 #include "Assignment.h"
+#include "Course.h"
 
 #include <cstdio>
 #include <iostream>

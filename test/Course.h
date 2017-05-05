@@ -12,7 +12,7 @@
 using namespace std;
 
 class Course {
- public:
+public:
   Course();
   Course(string);
 
@@ -41,7 +41,7 @@ class Course {
   void deleteSubmitted(int);
   void printSubmitted();
 
- private:
+private:
   string name;
   Database db;
 
@@ -51,4 +51,4 @@ class Course {
   map<int, Submitted *> submitted;
 };
 
-#endif  // COURSE_H
+#endif // COURSE_H

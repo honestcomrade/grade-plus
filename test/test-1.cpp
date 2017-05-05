@@ -13,7 +13,7 @@ using namespace std;
 
 int main() {
   // main prompt
-  bool isOpen = true;  // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
+  bool isOpen = true; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
   Course course;
 
   string input;
@@ -64,7 +64,7 @@ int main() {
       cout << "What would you like to do?\n";
       continue;
     }
-  }  // opening loop
+  } // opening loop
 
   // second loop while the course is open
   while (/*openCourse*/ isOpen) {
@@ -111,7 +111,7 @@ int main() {
       // quit
       else if (tolower(input[0]) == 'q') {
         cout << "Goodbye\n";
-        isOpen = false;  // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
+        isOpen = false; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
         break;
       }
     }
@@ -162,7 +162,7 @@ int main() {
         cout << "Remove which assignment? [number]: ";
         cin >> input;
         cout << "Calling assignmentRemove(" << input
-             << ")\n";  // to replace with member function
+             << ")\n"; // to replace with member function
         break;
       }
       // modify assignment
@@ -175,7 +175,7 @@ int main() {
       // quit
       else if (tolower(input[0]) == 'q') {
         cout << "Goodbye\n";
-        !isOpen;  // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
+        !isOpen; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
         break;
       }
 
@@ -191,5 +191,5 @@ int main() {
       cout << "Invalid entry: " << input << endl;
       continue;
     }
-  }  // while course is open
+  } // while course is open
 }

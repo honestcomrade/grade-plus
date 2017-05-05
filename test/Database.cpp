@@ -1,7 +1,7 @@
 #include "Database.h"
 
-#include <sqlite3.h>
 #include <iostream>
+#include <sqlite3.h>
 #include <string>
 #include <vector>
 
@@ -53,6 +53,4 @@ vector<vector<string>> Database::execute(string command) const {
   return results;
 }
 
-int Database::lastInsertRowid() const {
-  return sqlite3_last_insert_rowid(db);
-}
+int Database::lastInsertRowid() const { return sqlite3_last_insert_rowid(db); }

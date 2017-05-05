@@ -8,7 +8,7 @@
 using namespace std;
 
 class Database {
- public:
+public:
   Database();
   Database(string);
   ~Database();
@@ -18,7 +18,7 @@ class Database {
   vector<vector<string>> execute(string) const;
   int lastInsertRowid() const;
 
- private:
+private:
   sqlite3 *db;
 };
 

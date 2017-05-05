@@ -9,7 +9,7 @@
 using namespace std;
 
 class Assignment {
- public:
+public:
   Assignment(int, int, string, double, Database &);
 
   // Getters
@@ -33,7 +33,7 @@ class Assignment {
   static void create(Database &);
   static map<int, Assignment *> read(Database &);
 
- private:
+private:
   int id;
   int categoryId;
   string name;
@@ -42,4 +42,4 @@ class Assignment {
   Database &db;
 };
 
-#endif  // ASSIGNMENT_H
+#endif // ASSIGNMENT_H
