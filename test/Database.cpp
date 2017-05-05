@@ -43,7 +43,7 @@ vector<vector<string>> Database::execute(string command) const {
                             );
 
   cout << endl;
-  cout << "DB status: " << status;
+  cout << "DB status: " << sqlite3_errstr(status);
   if (err) {
     cout << ", Error: " << err;
     sqlite3_free(err);
