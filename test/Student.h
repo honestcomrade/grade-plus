@@ -9,7 +9,7 @@
 using namespace std;
 
 class Student {
-public:
+ public:
   Student(string, string, string, Database &);
 
   // Getters
@@ -31,7 +31,7 @@ public:
   static void create(Database &);
   static map<string, Student *> read(Database &);
 
-private:
+ private:
   string id;
   string firstName;
   string lastName;
@@ -39,4 +39,4 @@ private:
   Database &db;
 };
 
-#endif // STUDENT_H
+#endif  // STUDENT_H
