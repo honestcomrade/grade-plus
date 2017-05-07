@@ -22,14 +22,19 @@ void f1 (int max) {
 
 void f2 (int max) {
   while (true) {
-    if (0 < max && max <= 30) {
-      cout << "calling function 2 with " << max << " as param\n";
-      break;
-    }
-    else { 
-      cout << max << " is too high for f2.\nTry again: ";
+    if (max > 30) {
+      cout << max << " is too many students for one course! Try again.\nHow many students?: ";
       cin >> max;
       continue;
+    }
+    else if (max <= 0) {
+      cout << max << " is too few students for one course! Try again.\nHow many students?: ";
+      cin >> max;
+      continue;
+    }
+    else { 
+      cout << "calling function 2 with " << max << " as param\n";
+      break;
     }
   }
 }
@@ -68,7 +73,7 @@ void f5 (int max) {
       break;
     }
     else { 
-      cout << max << " is too high for f5.\nTry again: ";
+      cout << max << " is too high for f5. \nTry again: ";
       cin >> max;
       continue;
     }
@@ -85,7 +90,7 @@ int main() {
   int max = 0;
   char buf[100];
   // prompt loop
-  while (func >= 0 && func <= 5) {
+  while (true) {
     
     cout << "Which function? [1, 2, 3, 4, 5]\n";
     cin >> buf;
@@ -96,6 +101,7 @@ int main() {
 
     // sentinel
     if (prompt(func) < 0) {
+      cout << "Quitting\n";
       break;
     }
 
@@ -125,7 +131,8 @@ int main() {
     }
 
     else {
-      cout << "invalid\n";
+      cout << "Invalid Function choice! Try again.\n";
+      // continue;
 
     }
   }
