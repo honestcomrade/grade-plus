@@ -38,9 +38,17 @@ void Course::addAssignment(int categoryId, string name, int pointsPossible) {
 }
 
 void Course::updateAssignment(int id, int categoryId, string name,
-                              int pointsPossible) {}
+                              int pointsPossible) {
+  assignments[id]->setCategoryId(categoryId);
+  assignments[id]->setName(name);
+  assignments[id]->setPointsPossible(pointsPossible);
+  assignments[id]->update();
+}
 
-void Course::deleteAssignment(int id) {}
+void Course::deleteAssignment(int id) {
+  assignments[id]->remove();
+  assignments.erase(id);
+}
 
 void Course::printAssignments() {}
 
@@ -51,9 +59,16 @@ void Course::addCategory(string name, int weight) {
   categories[id] = &category;
 }
 
-void Course::updateCategory(int id, string name, int weight) {}
+void Course::updateCategory(int id, string name, int weight) {
+  categories[id]->setName(name);
+  categories[id]->setWeight(weight);
+  categories[id]->update();
+}
 
-void Course::deleteCategory(int id) {}
+void Course::deleteCategory(int id) {
+  categories[id]->remove();
+  categories.erase(id);
+}
 
 void Course::printCategories() {}
 
@@ -63,9 +78,16 @@ void Course::addStudent(string id, string firstName, string lastName) {
   students[id] = &student;
 }
 
-void Course::updateStudent(string id, string firstName, string lastName) {}
+void Course::updateStudent(string id, string firstName, string lastName) {
+  students[id]->setFirstName(firstName);
+  students[id]->setLastName(lastName);
+  students[id]->update();
+}
 
-void Course::deleteStudent(string id) {}
+void Course::deleteStudent(string id) {
+  students[id]->remove();
+  students.erase(id);
+}
 
 void Course::printStudents() {}
 
@@ -77,8 +99,17 @@ void Course::addSubmitted(int assignmentId, string studentId,
   this->submitted[id] = &submitted;
 }
 
-void Course::updateSubmitted(int id, int, string, double) {}
+void Course::updateSubmitted(int id, int assignmentId, string studentId,
+                             double pointsEarned) {
+  submitted[id]->setAssignmentId(assignmentId);
+  submitted[id]->setStudentId(studentId);
+  submitted[id]->setPointsEarned(pointsEarned);
+  submitted[id]->update();
+}
 
-void Course::deleteSubmitted(int id) {}
+void Course::deleteSubmitted(int id) {
+  submitted[id]->remove();
+  submitted.erase(id);
+}
 
 void Course::printSubmitted() {}
