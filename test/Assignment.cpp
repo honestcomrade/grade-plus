@@ -8,6 +8,14 @@
 
 using namespace std;
 
+ostream &operator<<(ostream &output, const Assignment &assignment) {
+  output << "Assignment " << assignment.getId() << " ";
+  output << "Category Id: " << assignment.getCategoryId() << ", ";
+  output << "Name: " << assignment.getName() << ", ";
+  output << "Points Possible: " << assignment.getPointsPossible();
+  return output;
+}
+
 Assignment::Assignment(int id, int categoryId, string name,
                        double pointsPossible, Database &db)
     : id(id), categoryId(categoryId), name(name),

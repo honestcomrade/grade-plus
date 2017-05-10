@@ -5,7 +5,10 @@
 #include "Student.h"
 #include "Submitted.h"
 
+#include <iostream>
 #include <string>
+
+using namespace std;
 
 Course::Course() {}
 
@@ -50,7 +53,11 @@ void Course::deleteAssignment(int id) {
   assignments.erase(id);
 }
 
-void Course::printAssignments() {}
+void Course::printAssignments() {
+  for (auto const &item : assignments) {
+    cout << item.second << "\n";
+  }
+}
 
 void Course::addCategory(string name, int weight) {
   Category category(0, name, weight, db);
@@ -70,7 +77,11 @@ void Course::deleteCategory(int id) {
   categories.erase(id);
 }
 
-void Course::printCategories() {}
+void Course::printCategories() {
+  for (auto const &item : categories) {
+    cout << item.second << "\n";
+  }
+}
 
 void Course::addStudent(string id, string firstName, string lastName) {
   Student student(id, firstName, lastName, db);
@@ -89,7 +100,11 @@ void Course::deleteStudent(string id) {
   students.erase(id);
 }
 
-void Course::printStudents() {}
+void Course::printStudents() {
+  for (auto const &item : students) {
+    cout << item.second << "\n";
+  }
+}
 
 void Course::addSubmitted(int assignmentId, string studentId,
                           double pointsEarned) {
@@ -112,4 +127,8 @@ void Course::deleteSubmitted(int id) {
   submitted.erase(id);
 }
 
-void Course::printSubmitted() {}
+void Course::printSubmitted() {
+  for (auto const &item : submitted) {
+    cout << item.second << "\n";
+  }
+}

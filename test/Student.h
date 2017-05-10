@@ -9,6 +9,8 @@
 using namespace std;
 
 class Student {
+  friend ostream &operator<<(ostream &, const Student &);
+
 public:
   Student(string, string, string, Database &);
 

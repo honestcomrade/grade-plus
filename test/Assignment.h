@@ -9,6 +9,8 @@
 using namespace std;
 
 class Assignment {
+  friend ostream &operator<<(ostream &, const Assignment &);
+
 public:
   Assignment(int, int, string, double, Database &);
 
