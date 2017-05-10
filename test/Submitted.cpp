@@ -8,6 +8,14 @@
 
 using namespace std;
 
+ostream &operator<<(ostream &output, const Submitted &submitted) {
+  output << "Submitted " << submitted.getId() << " ";
+  output << "Assignment Id: " << submitted.getAssignmentId() << ", ";
+  output << "Student Id: " << submitted.getStudentId() << ", ";
+  output << "Points Earned: " << submitted.getPointsEarned();
+  return output;
+}
+
 Submitted::Submitted(int id, int assignmentId, string studentId,
                      double pointsEarned, Database &db)
     : id(id), assignmentId(assignmentId), studentId(studentId),

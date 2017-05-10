@@ -11,6 +11,8 @@
 using namespace std;
 
 class Category {
+  friend ostream &operator<<(ostream &, const Category &);
+
 public:
   Category(int, string, int, Database &);
 
