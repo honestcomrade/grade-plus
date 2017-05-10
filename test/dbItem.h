@@ -1,6 +1,6 @@
 // dbItem.h
-#include "dbItem.h"
 #include "Database.h"
+#include "dbItem.h"
 
 #include <map>
 #include <sstream>
@@ -9,13 +9,10 @@
 
 using namespace std;
 
-dbItem::dbItem(int id, int categoryId, string name,
-                       double pointsPossible, Database &db)
-    : id(id),
-      categoryId(categoryId),
-      name(name),
-      pointsPossible(pointsPossible),
-      db(db) {}
+dbItem::dbItem(int id, int categoryId, string name, double pointsPossible,
+               Database &db)
+    : id(id), categoryId(categoryId), name(name),
+      pointsPossible(pointsPossible), db(db) {}
 
 // Getters
 int dbItem::getId() const { return id; }
@@ -72,14 +69,13 @@ void dbItem::remove() const {
 
 // Static database query commands
 void dbItem::create(Database &db) {
-  string command =
-      "CREATE TABLE IF NOT EXISTS dbItems (\n"
-      "    id             INTEGER     PRIMARY KEY,\n"
-      "    categoryId     INTEGER (1) NOT NULL,\n"
-      "    name           TEXT (150)  NOT NULL\n"
-      "                               UNIQUE,\n"
-      "    pointsPossible NUMERIC (4) NOT NULL\n"
-      ");";
+  string command = "CREATE TABLE IF NOT EXISTS dbItems (\n"
+                   "    id             INTEGER     PRIMARY KEY,\n"
+                   "    categoryId     INTEGER (1) NOT NULL,\n"
+                   "    name           TEXT (150)  NOT NULL\n"
+                   "                               UNIQUE,\n"
+                   "    pointsPossible NUMERIC (4) NOT NULL\n"
+                   ");";
 
   db.execute(command);
 }
