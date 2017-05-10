@@ -8,6 +8,13 @@
 
 using namespace std;
 
+ostream &operator<<(ostream &output, const Category &category) {
+  output << "Category " << category.getId() << " ";
+  output << "Name: " << category.getName() << ", ";
+  output << "Weight: " << category.getWeight();
+  return output;
+}
+
 Category::Category(int id, string name, int weight, Database &db)
     : id(id), name(name), weight(weight), db(db) {}
 

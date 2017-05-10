@@ -6,6 +6,13 @@
 
 using namespace std;
 
+ostream &operator<<(ostream &output, const Student &student) {
+  output << "Student " << student.getId() << " ";
+  output << "First Name: " << student.getFirstName() << ", ";
+  output << "Last Name: " << student.getLastName();
+  return output;
+}
+
 Student::Student(string id, string firstName, string lastName, Database &db)
     : id(id), firstName(firstName), lastName(lastName), db(db) {}
 

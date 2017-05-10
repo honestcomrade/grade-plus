@@ -9,6 +9,8 @@
 using namespace std;
 
 class Submitted {
+  friend ostream &operator<<(ostream &, const Submitted &);
+
 public:
   Submitted(int, int, string, double, Database &);
 

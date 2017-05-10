@@ -2,7 +2,7 @@ CXX=clang++
 CPPFLAGS=-std=c++11
 LDFLAGS=-l sqlite3
 
-OBJS=Assignment.o Category.o Course.o Database.o Student.o Submitted.o
+OBJS=Assignment.o Category.o Course.o Database.o dbItem.o Student.o Submitted.o
 
 all: test0
 
