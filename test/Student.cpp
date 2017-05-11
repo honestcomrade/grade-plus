@@ -1,5 +1,6 @@
 #include "Student.h"
 #include "Database.h"
+#include "dbItem.h"
 
 #include <sstream>
 #include <string>
@@ -14,7 +15,7 @@ ostream &operator<<(ostream &output, const Student &student) {
 }
 
 Student::Student(string id, string firstName, string lastName, Database &db)
-    : id(id), firstName(firstName), lastName(lastName), db(db) {}
+    : dbItem(db), id(id), firstName(firstName), lastName(lastName) {}
 
 // Getters
 string Student::getId() const { return id; }

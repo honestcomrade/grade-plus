@@ -2,14 +2,15 @@
 #define STUDENT_H
 
 #include "Database.h"
+#include "dbItem.h"
 
 #include <map>
 #include <string>
 
 using namespace std;
 
-class Student {
-  friend ostream &operator<<(ostream &, const Student &);
+class Student : public dbItem {
+friend ostream &operator<<(ostream &, const Student &);
 
 public:
   Student(string, string, string, Database &);
@@ -25,9 +26,9 @@ public:
   void setLastName(string);
 
   // Database query commands
-  void insert();
-  void update() const;
-  void remove() const;
+  virtual void insert();
+  virtual void update() const;
+  virtual void remove() const;
 
   // Static database query commands
   static void create(Database &);
@@ -37,8 +38,6 @@ private:
   string id;
   string firstName;
   string lastName;
-
-  Database &db;
 };
 
 #endif // STUDENT_H

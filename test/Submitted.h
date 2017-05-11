@@ -2,13 +2,14 @@
 #define SUBMITTED_H
 
 #include "Database.h"
+#include "dbItem.h"
 
 #include <map>
 #include <string>
 
 using namespace std;
 
-class Submitted {
+class Submitted : public dbItem {
   friend ostream &operator<<(ostream &, const Submitted &);
 
 public:
@@ -27,9 +28,9 @@ public:
   void setPointsEarned(double);
 
   // Database query commands
-  void insert();
-  void update() const;
-  void remove() const;
+  virtual void insert();
+  virtual void update() const;
+  virtual void remove() const;
 
   // Static database query commands
   static void create(Database &);
@@ -40,8 +41,6 @@ private:
   int assignmentId;
   string studentId;
   double pointsEarned;
-
-  Database &db;
 };
 
 #endif // SUBMITTED_H
