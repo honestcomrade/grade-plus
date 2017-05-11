@@ -4,6 +4,4 @@
 
 using namespace std;
 
-dbItem::dbItem(Database &db)
-    : db(db) {}
-
+dbItem::dbItem(Database &db) : db(db) {}

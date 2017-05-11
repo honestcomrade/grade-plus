@@ -34,10 +34,11 @@ string Course::getName() const { return name; }
 Database &Course::getDb() { return db; }
 
 void Course::addAssignment(int categoryId, string name, int pointsPossible) {
-  Assignment assignment(0, categoryId, name, pointsPossible, db);
-  assignment.insert();
-  int id = assignment.getId();
-  assignments[id] = &assignment;
+  Assignment *assignment =
+      new Assignment(0, categoryId, name, pointsPossible, db);
+  assignment->insert();
+  int id = assignment->getId();
+  assignments[id] = assignment;
 }
 
 void Course::updateAssignment(int id, int categoryId, string name,
@@ -55,15 +56,15 @@ void Course::deleteAssignment(int id) {
 
 void Course::printAssignments() {
   for (auto const &item : assignments) {
-    cout << item.second << "\n";
+    cout << *item.second << "\n";
   }
 }
 
 void Course::addCategory(string name, int weight) {
-  Category category(0, name, weight, db);
-  category.insert();
-  int id = category.getId();
-  categories[id] = &category;
+  Category *category = new Category(0, name, weight, db);
+  category->insert();
+  int id = category->getId();
+  categories[id] = category;
 }
 
 void Course::updateCategory(int id, string name, int weight) {
@@ -79,14 +80,14 @@ void Course::deleteCategory(int id) {
 
 void Course::printCategories() {
   for (auto const &item : categories) {
-    cout << item.second << "\n";
+    cout << *item.second << "\n";
   }
 }
 
 void Course::addStudent(string id, string firstName, string lastName) {
-  Student student(id, firstName, lastName, db);
-  student.insert();
-  students[id] = &student;
+  Student *student = new Student(id, firstName, lastName, db);
+  students[id] = student;
+  student->insert();
 }
 
 void Course::updateStudent(string id, string firstName, string lastName) {
@@ -102,16 +103,17 @@ void Course::deleteStudent(string id) {
 
 void Course::printStudents() {
   for (auto const &item : students) {
-    cout << item.second << "\n";
+    cout << *item.second << "\n";
   }
 }
 
 void Course::addSubmitted(int assignmentId, string studentId,
                           double pointsEarned) {
-  Submitted submitted(0, assignmentId, studentId, pointsEarned, db);
-  submitted.insert();
-  int id = submitted.getId();
-  this->submitted[id] = &submitted;
+  Submitted *submitted =
+      new Submitted(0, assignmentId, studentId, pointsEarned, db);
+  submitted->insert();
+  int id = submitted->getId();
+  this->submitted[id] = submitted;
 }
 
 void Course::updateSubmitted(int id, int assignmentId, string studentId,
@@ -129,6 +131,6 @@ void Course::deleteSubmitted(int id) {
 
 void Course::printSubmitted() {
   for (auto const &item : submitted) {
-    cout << item.second << "\n";
+    cout << *item.second << "\n";
   }
 }

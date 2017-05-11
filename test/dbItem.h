@@ -14,9 +14,8 @@ class dbItem {
   virtual void update() const = 0;
   virtual void remove() const = 0;
 
- protected:
+protected:
   Database &db;
-
 };
 
 #endif
