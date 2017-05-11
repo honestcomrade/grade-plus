@@ -6,13 +6,9 @@
 using namespace std;
 
 class dbItem {
-<<<<<<< Updated upstream
-public:
-=======
  
  public:
 
->>>>>>> Stashed changes
   dbItem(Database &);
 
   virtual void insert() = 0;
