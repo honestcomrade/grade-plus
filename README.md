@@ -25,18 +25,19 @@ This project is intended for use by anyone who can work in a bash terminal, and 
 will be freely available to anyone who chooses to use it.
 
 # Current Usage
-We've just begun testing the database integration with sqlite. To run the test as it is
+We've fully implemented the Class hierachy and added the SQL database to all the classes. To run the test as it is
 currently implemented, pull the whole repository, then:
 
 ```
 
 cd test
 make
+./test0.out
 
 ```
 
 # Why 'make' ?
-Since we are including the sqlite functionality, we need to link the object files to the data base. 
+Since we are including the sqlite functionality, we need to link the object files to the data base. And there's plenty of object files.
 Leveraging c-make by including a "make file" to generate the executable automates that process.
 
 
