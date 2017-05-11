@@ -22,15 +22,13 @@ void f1(int max) {
 void f2(int max) {
   while (true) {
     if (max > 30) {
-      cout << max
-           << " is too many students for one course! Try again.\nHow many "
-              "students?: ";
+      cout << max << " is too many students for one course! Try again.\nHow "
+                     "many students?: ";
       cin >> max;
       continue;
     } else if (max <= 0) {
-      cout << max
-           << " is too few students for one course! Try again.\nHow many "
-              "students?: ";
+      cout << max << " is too few students for one course! Try again.\nHow "
+                     "many students?: ";
       cin >> max;
       continue;
     } else {
@@ -78,55 +76,38 @@ void f5(int max) {
   }
 }
 
-int prompt(int func) { return func; }
+void (*funcs[])(int) = {f1, f2, f3, f4, f5};
+
+int prompt(int max, string p) {
+  char buf[100];
+  int choice = max + 1;
+
+  while (choice > max) {
+    cout << p;
+
+    cin.getline(buf, 100);
+    choice = atoi(buf);
+  }
+
+  return choice;
+}
 
 int main() {
+  int func;
+  int max = 5;
 
-  int func = 0;
-  int max = 0;
-  char buf[100];
   // prompt loop
   while (true) {
 
-    cout << "Which function? [1, 2, 3, 4, 5]\n";
-    cin >> buf;
-    func = atoi(buf);
-    cout << "How many?: ";
-    cin >> buf;
-    max = atoi(buf);
+    func = prompt(max, "Which function? [1, 2, 3, 4, 5]: ");
 
     // sentinel
-    if (prompt(func) < 0) {
+    if (func <= 0) {
       cout << "Quitting\n";
       break;
-    }
-
-    else if (prompt(func) == 1) {
-      f1(max);
-      // break;
-    }
-
-    else if (prompt(func) == 2) {
-      f2(max);
-      // break;
-    }
-
-    else if (prompt(func) == 3) {
-      f3(max);
-      // break;
-    }
-
-    else if (prompt(func) == 4) {
-      f5(max);
-      // break;
-    }
-
-    else if (prompt(func) == 5) {
-      f5(max);
-      // break;
-    }
-
-    else {
+    } else if (func <= max) {
+      (*funcs[func - 1])(7);
+    } else {
       cout << "Invalid Function choice! Try again.\n";
       // continue;
     }
