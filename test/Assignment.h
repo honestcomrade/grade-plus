@@ -2,16 +2,16 @@
 #define ASSIGNMENT_H
 
 #include "Database.h"
+#include "dbItem.h"
 
 #include <map>
 #include <string>
 
 using namespace std;
 
-class Assignment {
-  friend ostream &operator<<(ostream &, const Assignment &);
+class Assignment : public dbItem {
 
-public:
+ public:
   Assignment(int, int, string, double, Database &);
 
   // Getters
@@ -27,13 +27,15 @@ public:
   void setPointsPossible(double);
 
   // Database query commands
-  void insert();
-  void update() const;
-  void remove() const;
+  virtual void insert();
+  virtual void update() const;
+  virtual void remove() const;
 
   // Static database query commands
   static void create(Database &);
   static map<int, Assignment *> read(Database &);
+
+  friend ostream &operator<<(ostream &, const Assignment &);
 
 private:
   int id;
@@ -41,7 +43,7 @@ private:
   string name;
   double pointsPossible;
 
-  Database &db;
+  // Database &db;
 };
 
 #endif // ASSIGNMENT_H

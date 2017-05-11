@@ -1,4 +1,5 @@
 #include "Assignment.h"
+#include "dbItem.h"
 #include "Database.h"
 
 #include <iostream>
@@ -19,8 +20,8 @@ ostream &operator<<(ostream &output, const Assignment &assignment) {
 
 Assignment::Assignment(int id, int categoryId, string name,
                        double pointsPossible, Database &db)
-    : id(id), categoryId(categoryId), name(name),
-      pointsPossible(pointsPossible), db(db) {}
+    : dbItem(db), id(id), categoryId(categoryId), name(name),
+      pointsPossible(pointsPossible) {}
 
 // Getters
 int Assignment::getId() const { return id; }

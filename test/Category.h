@@ -4,16 +4,16 @@
 #define Category_H
 
 #include "Database.h"
+#include "dbItem.h"
 
 #include <map>
 #include <string>
 
 using namespace std;
 
-class Category {
-  friend ostream &operator<<(ostream &, const Category &);
+class Category : public dbItem {
 
-public:
+ public:
   Category(int, string, int, Database &);
 
   // Getters
@@ -27,20 +27,22 @@ public:
   void setWeight(int);
 
   // Database query commands
-  void insert();
-  void update() const;
-  void remove() const;
+  virtual void insert();
+  virtual void update() const;
+  virtual void remove() const;
 
   // Create and read database table
   static void create(Database &);
   static map<int, Category *> read(Database &);
+ 
+  friend ostream &operator<<(ostream &, const Category &);
 
-private:
+ private:
   int id;
   string name;
   int weight;
 
-  Database &db;
+  // Database &db;
 };
 
 #endif
