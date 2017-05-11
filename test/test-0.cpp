@@ -16,26 +16,51 @@ int main() {
   // test instantiation of a Course object.
   cout << "Testing instantiation of a Course object:" << endl;
   Course course("test-0");
-  cout << "Created " << course.getName() << endl;
+  cout << "Created " << course.getName() << "\n\n";
 
-  // cout << "All Assignments: " << course.assignments.size() << endl;
-  // cout << "All Categories: " << course.categories.size() << endl;
-  // cout << "All Students: " << course.students.size() << endl;
-  // cout << "All Submitted: " << course.submitted.size() << endl;
+  // Test students
+  course.addStudent("1", "Thomas", "Munduchira");
+  course.addStudent("2", "Jesse", "Smick");
+  course.addStudent("3", "Joe", "Saraceno");
+  course.printStudents();
+  cout << "\n";
+  course.updateStudent("1", "Rahul", "Sharma");
+  course.deleteStudent("2");
+  course.printStudents();
+  cout << "\n";
 
-  // // Test adding items to the db
-  // Category c1(0, "Homework", 20, course.getDb());
-  // Category c2(0, "Labs", 30, course.getDb());
-  // Category c3(0, "Exams", 50, course.getDb());
-  // c1.insert();
-  // c2.insert();
-  // c3.insert();
+  // Test categories
+  course.addCategory("Homework", 20);
+  course.addCategory("Labs", 30);
+  course.addCategory("Exams", 50);
+  course.printCategories();
+  cout << "\n";
+  course.updateCategory(1, "HW", 45);
+  course.deleteCategory(2);
+  course.printCategories();
+  cout << "\n";
 
-  // course.categories[c1.getId()] = &c1;
-  // course.categories[c2.getId()] = &c2;
-  // course.categories[c3.getId()] = &c3;
+  // Test assignments
+  course.addAssignment(1, "Homework 1", 25);
+  course.addAssignment(1, "Homework 2", 30);
+  course.addAssignment(2, "Lab 1", 15);
+  course.addAssignment(2, "Lab 2", 10);
+  course.addAssignment(3, "Exam 1", 100);
+  course.addAssignment(3, "Exam 2", 150);
+  course.printAssignments();
+  cout << "\n";
+  course.updateAssignment(1, 2, "Labz 1", 30);
+  course.deleteAssignment(2);
+  course.printAssignments();
+  cout << "\n";
 
-  // for (auto it : course.categories) {
-  //   cout << it.first << " " << it.second->getName() << endl;
-  // }
+  // Test submitted
+  course.addSubmitted(1, "1", 25);
+  course.addSubmitted(3, "2", 10);
+  course.addSubmitted(5, "3", 125);
+  course.printSubmitted();
+  cout << "\n";
+  course.updateSubmitted(1, 2, "2", 30);
+  course.deleteSubmitted(2);
+  course.printSubmitted();
 }

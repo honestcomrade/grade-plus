@@ -24,21 +24,25 @@ public:
   void addAssignment(int, string, int);
   void updateAssignment(int, int, string, int);
   void deleteAssignment(int);
+  void printAssignment(int);
   void printAssignments();
-
+  
   void addCategory(string, int);
   void updateCategory(int, string, int);
   void deleteCategory(int);
+  void printCategory(int);
   void printCategories();
 
   void addStudent(string, string, string);
   void updateStudent(string, string, string);
   void deleteStudent(string);
+  void printStudent(string);
   void printStudents();
 
   void addSubmitted(int, string, double);
   void updateSubmitted(int, int, string, double);
   void deleteSubmitted(int);
+  void printSubmitted(int);
   void printSubmitted();
 
 private:

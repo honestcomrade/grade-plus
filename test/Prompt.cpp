@@ -22,13 +22,15 @@ void f1(int max) {
 void f2(int max) {
   while (true) {
     if (max > 30) {
-      cout << max << " is too many students for one course! Try again.\nHow "
-                     "many students?: ";
+      cout << max
+           << " is too many students for one course! Try again.\nHow "
+              "many students?: ";
       cin >> max;
       continue;
     } else if (max <= 0) {
-      cout << max << " is too few students for one course! Try again.\nHow "
-                     "many students?: ";
+      cout << max
+           << " is too few students for one course! Try again.\nHow "
+              "many students?: ";
       cin >> max;
       continue;
     } else {

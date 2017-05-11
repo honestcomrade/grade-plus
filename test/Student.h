@@ -4,6 +4,7 @@
 #include "Database.h"
 #include "dbItem.h"
 
+#include <iostream>
 #include <map>
 #include <string>
 
