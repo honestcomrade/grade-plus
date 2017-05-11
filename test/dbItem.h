@@ -6,9 +6,8 @@
 using namespace std;
 
 class dbItem {
- 
- public:
 
+public:
   dbItem(Database &);
 
   virtual void insert() = 0;
