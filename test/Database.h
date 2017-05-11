@@ -22,4 +22,4 @@ private:
   sqlite3 *db = 0;
 };
 
-#endif
+#endif // DATABASE_H
