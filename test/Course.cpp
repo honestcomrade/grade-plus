@@ -54,6 +54,8 @@ void Course::deleteAssignment(int id) {
   assignments.erase(id);
 }
 
+void Course::printAssignment(int id) { cout << assignments[id] << "\n"; }
+
 void Course::printAssignments() {
   for (auto const &item : assignments) {
     cout << *item.second << "\n";
@@ -78,6 +80,8 @@ void Course::deleteCategory(int id) {
   categories.erase(id);
 }
 
+void Course::printCategory(int id) { cout << categories[id] << "\n"; }
+
 void Course::printCategories() {
   for (auto const &item : categories) {
     cout << *item.second << "\n";
@@ -100,6 +104,8 @@ void Course::deleteStudent(string id) {
   students[id]->remove();
   students.erase(id);
 }
+
+void Course::printStudent(string id) { cout << students[id] << "\n"; }
 
 void Course::printStudents() {
   for (auto const &item : students) {
@@ -128,6 +134,8 @@ void Course::deleteSubmitted(int id) {
   submitted[id]->remove();
   submitted.erase(id);
 }
+
+void Course::printSubmitted(int id) { cout << submitted[id] << "\n"; }
 
 void Course::printSubmitted() {
   for (auto const &item : submitted) {
