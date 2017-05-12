@@ -2,7 +2,7 @@
 #define STUDENT_H
 
 #include "Database.h"
-#include "dbItem.h"
+#include "DatabaseItem.h"
 
 #include <iostream>
 #include <map>
@@ -10,8 +10,8 @@
 
 using namespace std;
 
-class Student : public dbItem {
-friend ostream &operator<<(ostream &, const Student &);
+class Student : public DatabaseItem {
+  friend ostream &operator<<(ostream &, const Student &);
 
 public:
   Student(string, string, string, Database &);

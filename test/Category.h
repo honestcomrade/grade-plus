@@ -4,14 +4,14 @@
 #define Category_H
 
 #include "Database.h"
-#include "dbItem.h"
+#include "DatabaseItem.h"
 
 #include <map>
 #include <string>
 
 using namespace std;
 
-class Category : public dbItem {
+class Category : public DatabaseItem {
 
   friend ostream &operator<<(ostream &, const Category &);
 

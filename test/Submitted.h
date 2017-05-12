@@ -2,14 +2,14 @@
 #define SUBMITTED_H
 
 #include "Database.h"
-#include "dbItem.h"
+#include "DatabaseItem.h"
 
 #include <map>
 #include <string>
 
 using namespace std;
 
-class Submitted : public dbItem {
+class Submitted : public DatabaseItem {
   friend ostream &operator<<(ostream &, const Submitted &);
 
 public:

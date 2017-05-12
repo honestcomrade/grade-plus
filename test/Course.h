@@ -26,7 +26,7 @@ public:
   void deleteAssignment(int);
   void printAssignment(int);
   void printAssignments();
-  
+
   void addCategory(string, int);
   void updateCategory(int, string, int);
   void deleteCategory(int);

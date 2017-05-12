@@ -2,14 +2,14 @@
 #define ASSIGNMENT_H
 
 #include "Database.h"
-#include "dbItem.h"
+#include "DatabaseItem.h"
 
 #include <map>
 #include <string>
 
 using namespace std;
 
-class Assignment : public dbItem {
+class Assignment : public DatabaseItem {
 
   friend ostream &operator<<(ostream &, const Assignment &);
 

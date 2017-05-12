@@ -1,14 +1,13 @@
-#ifndef DBITEM_H
-#define DBITEM_H
+#ifndef DATABASEITEM_H
+#define DATABASEITEM_H
 
 #include "Database.h"
 
 using namespace std;
 
-class dbItem {
-
+class DatabaseItem {
 public:
-  dbItem(Database &);
+  DatabaseItem(Database &);
 
   virtual void insert() = 0;
   virtual void update() const = 0;
@@ -18,4 +17,4 @@ protected:
   Database &db;
 };
 
-#endif // DBITEM.H
+#endif // DatabaseItem.h

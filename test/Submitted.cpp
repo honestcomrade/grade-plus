@@ -1,6 +1,6 @@
 #include "Submitted.h"
 #include "Database.h"
-#include "dbItem.h"
+#include "DatabaseItem.h"
 
 #include <map>
 #include <sstream>
@@ -19,8 +19,8 @@ ostream &operator<<(ostream &output, const Submitted &submitted) {
 
 Submitted::Submitted(int id, int assignmentId, string studentId,
                      double pointsEarned, Database &db)
-    : dbItem(db), id(id), assignmentId(assignmentId), studentId(studentId),
-      pointsEarned(pointsEarned) {}
+    : DatabaseItem(db), id(id), assignmentId(assignmentId),
+      studentId(studentId), pointsEarned(pointsEarned) {}
 
 // Getters
 int Submitted::getId() const { return id; }
