@@ -10,8 +10,10 @@
 using namespace std;
 
 class Assignment : public dbItem {
+  
+  friend ostream &operator<<(ostream &, const Assignment &);
 
- public:
+public:
   Assignment(int, int, string, double, Database &);
 
   // Getters
@@ -35,7 +37,6 @@ class Assignment : public dbItem {
   static void create(Database &);
   static map<int, Assignment *> read(Database &);
 
-  friend ostream &operator<<(ostream &, const Assignment &);
 
 private:
   int id;

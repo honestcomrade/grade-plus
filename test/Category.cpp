@@ -1,6 +1,6 @@
 #include "Category.h"
-#include "dbItem.h"
 #include "Database.h"
+#include "dbItem.h"
 
 #include <map>
 #include <sstream>
@@ -17,7 +17,7 @@ ostream &operator<<(ostream &output, const Category &category) {
 }
 
 Category::Category(int id, string name, int weight, Database &db)
-    :  dbItem(db), id(id), name(name), weight(weight) {}
+    : dbItem(db), id(id), name(name), weight(weight) {}
 
 // Getters
 int Category::getId() const { return id; }

@@ -12,8 +12,10 @@
 using namespace std;
 
 class Category : public dbItem {
+  
+  friend ostream &operator<<(ostream &, const Category &);
 
- public:
+public:
   Category(int, string, int, Database &);
 
   // Getters
@@ -34,10 +36,9 @@ class Category : public dbItem {
   // Create and read database table
   static void create(Database &);
   static map<int, Category *> read(Database &);
- 
-  friend ostream &operator<<(ostream &, const Category &);
 
- private:
+
+private:
   int id;
   string name;
   int weight;
