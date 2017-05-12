@@ -73,8 +73,10 @@ void Course::addCategory(string name, int weight) {
 }
 
 void Course::updateCategory(int id, string name, int weight) {
-  categories[id]->setName(name);
-  categories[id]->setWeight(weight);
+  if (name.size() != 0)
+    categories[id]->setName(name);
+  if (weight != -1)
+    categories[id]->setWeight(weight);
   categories[id]->update();
 }
 

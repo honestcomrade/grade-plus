@@ -11,8 +11,6 @@
 
 using namespace std;
 
-int convertToInt(string);
-
 int main() {
   // main prompt
   bool isOpen = true; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
@@ -71,7 +69,9 @@ int main() {
   while (/*openCourse*/ isOpen) {
     cout << "LIST ALL THE COURSE DETAILS:\n";
     cout << "Name: \t" << openCourse << "\n\n";
-    cout << "\tAdd/Remove STUDENTS [S]\n\tAdd/Remove/Modify ASSIGNMENTS\n $: ";
+    cout << "\tAdd/Remove/Modify STUDENTS [S]\n\tAdd/Remove/Modify ASSIGNMENTS "
+            "[A]\n\tAdd/Remove/Modify CATEGORIES [C]\n\tAdd/Remove/Modify "
+            "SUBMITTED [U]\n $: ";
     cin >> input;
     // students handler
     if (tolower(input[0]) == 's') {
@@ -160,10 +160,10 @@ int main() {
         course.printCategories();
         cout << "Category ID? (or press enter to keep current one): ";
         getline(cin, input);
-        int category = convertToInt(input);
+        int category = atoi(input.c_str());
         cout << "Points possible? (or press enter to keep current one): ";
         getline(cin, input);
-        int weight = convertToInt(input);
+        int weight = atoi(input.c_str());
         cout << "Calling course.addAssignment(" << category << "," << name
              << "," << weight << ");\n";
         course.updateAssignment(id, category, name, weight);
@@ -189,17 +189,66 @@ int main() {
       }
     }
 
+    // CATEGORIES HANDLER
+    else if (tolower(input[0]) == 'c') {
+      course.printCategories();
+      cout.width(6);
+      cout << "\tADD Category " << right << "[A]\nREMOVE Category" << right
+           << " [R]\n MODIFY Category" << right << "[M]:\n $: ";
+      cin >> input;
+      // add category
+      if (tolower(input[0]) == 'a') {
+        cout << "Adding a new category:\n";
+        cout << "Category Name? ";
+        cin >> input;
+        string name = input;
+        cout << "Points possible? ";
+        cin >> input;
+        int pointsPossible = stoi(input);
+        cout << "Calling course.addCategory(" << name << "," << pointsPossible
+             << ");\n";
+        course.addCategory(name, pointsPossible);
+      }
+      // modify category
+      else if (tolower(input[0]) == 'm') {
+        cout << "Modify category with ID: ";
+        cin >> input;
+        int id = stoi(input);
+        cout << "Category Name? (or press enter to keep current one): ";
+        getline(cin, input);
+        string name = input;
+        cout << "Points possible? (or press enter to keep current one): ";
+        getline(cin, input);
+        int pointsPossible = atoi(input.c_str());
+        cout << "Calling course.updateCategory(" << name << ","
+             << pointsPossible << ");\n";
+        course.updateCategory(id, name, pointsPossible);
+      }
+      // remove category
+      else if (tolower(input[0]) == 'r') {
+        cout << "Remove category with ID: ";
+        cin >> input;
+        int id = stoi(input);
+        cout << "Calling course.deleteCategory(" << id << ")\n";
+        course.deleteCategory(id);
+      }
+      // quit
+      else if (tolower(input[0]) == 'q') {
+        cout << "Goodbye\n";
+        !isOpen; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
+      }
+
+      // invalid
+      else {
+        cout << "Invalid entry: " << input << endl;
+        continue;
+      }
+    }
+
     // else invalid
     else {
       cout << "Invalid entry: " << input << endl;
       continue;
     }
   } // while course is open
-}
-
-int convertToInt(string input) {
-  if (input.size() == 0) {
-    return -1;
-  }
-  return stoi(input);
 }
