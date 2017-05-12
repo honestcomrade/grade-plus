@@ -131,9 +131,12 @@ void Course::addSubmitted(int assignmentId, string studentId,
 
 void Course::updateSubmitted(int id, int assignmentId, string studentId,
                              double pointsEarned) {
-  submitted[id]->setAssignmentId(assignmentId);
-  submitted[id]->setStudentId(studentId);
-  submitted[id]->setPointsEarned(pointsEarned);
+  if (assignmentId != -1)
+    submitted[id]->setAssignmentId(assignmentId);
+  if (studentId.size() != 0)
+    submitted[id]->setStudentId(studentId);
+  if (pointsEarned != -1)
+    submitted[id]->setPointsEarned(pointsEarned);
   submitted[id]->update();
 }
 

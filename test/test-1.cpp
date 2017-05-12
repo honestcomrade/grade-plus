@@ -29,7 +29,7 @@ int main() {
 
     // open Course
     if (tolower(input[0]) == 'w') {
-      cout << "Which Course?: ";
+      cout << "Which Course: ";
       cin >> input;
       cout << "Opening Course: " << input << "...\n";
       course.load(input);
@@ -39,10 +39,10 @@ int main() {
     // create Course
     else if (tolower(input[0]) == 'c') {
       cout << "Please enter a unique name\n";
-      cout << "Course Name?: ";
+      cout << "Course Name: ";
       cin >> input;
       string cName = input;
-      cout << "Course Subject?: ";
+      cout << "Course Subject: ";
       cin >> input;
       string cSubj = input;
       cout << "Creating Course: " << cName << " - " << cSubj << endl;
@@ -95,13 +95,13 @@ int main() {
       }
       // modify student
       else if (tolower(input[0]) == 'a') {
-        cout << "Student ID? (or press enter to keep current one): ";
+        cout << "Student ID (or press enter to keep current one): ";
         cin >> input;
         string id = input;
-        cout << "Student First Name? (or press enter to keep current one): ";
+        cout << "Student First Name (or press enter to keep current one): ";
         cin >> input;
         string firstName = input;
-        cout << "Student Last Name? (or press enter to keep current one): ";
+        cout << "Student Last Name (or press enter to keep current one): ";
         cin >> input;
         string lastName = input;
         cout << "Student Name: " << firstName << " " << lastName
@@ -135,14 +135,14 @@ int main() {
       // add assignment
       if (tolower(input[0]) == 'a') {
         cout << "Adding a new assignment:\n";
-        cout << "Assignment Name? ";
+        cout << "Assignment Name: ";
         cin >> input;
         string name = input;
         course.printCategories();
-        cout << "Category ID? ";
+        cout << "Category ID: ";
         cin >> input;
         int category = stoi(input);
-        cout << "Points possible? ";
+        cout << "Points possible: ";
         cin >> input;
         int weight = stoi(input);
         cout << "Calling course.addAssignment(" << category << "," << name
@@ -154,14 +154,14 @@ int main() {
         cout << "Modify assignment with ID: ";
         cin >> input;
         int id = stoi(input);
-        cout << "Assignment Name? (or press enter to keep current one): ";
+        cout << "Assignment Name (or press enter to keep current one): ";
         getline(cin, input);
         string name = input;
         course.printCategories();
-        cout << "Category ID? (or press enter to keep current one): ";
+        cout << "Category ID (or press enter to keep current one): ";
         getline(cin, input);
         int category = atoi(input.c_str());
-        cout << "Points possible? (or press enter to keep current one): ";
+        cout << "Points possible (or press enter to keep current one): ";
         getline(cin, input);
         int weight = atoi(input.c_str());
         cout << "Calling course.addAssignment(" << category << "," << name
@@ -199,10 +199,10 @@ int main() {
       // add category
       if (tolower(input[0]) == 'a') {
         cout << "Adding a new category:\n";
-        cout << "Category Name? ";
+        cout << "Category Name: ";
         cin >> input;
         string name = input;
-        cout << "Points possible? ";
+        cout << "Points possible: ";
         cin >> input;
         int pointsPossible = stoi(input);
         cout << "Calling course.addCategory(" << name << "," << pointsPossible
@@ -214,10 +214,10 @@ int main() {
         cout << "Modify category with ID: ";
         cin >> input;
         int id = stoi(input);
-        cout << "Category Name? (or press enter to keep current one): ";
+        cout << "Category Name (or press enter to keep current one): ";
         getline(cin, input);
         string name = input;
-        cout << "Points possible? (or press enter to keep current one): ";
+        cout << "Points possible (or press enter to keep current one): ";
         getline(cin, input);
         int pointsPossible = atoi(input.c_str());
         cout << "Calling course.updateCategory(" << name << ","
@@ -231,6 +231,68 @@ int main() {
         int id = stoi(input);
         cout << "Calling course.deleteCategory(" << id << ")\n";
         course.deleteCategory(id);
+      }
+      // quit
+      else if (tolower(input[0]) == 'q') {
+        cout << "Goodbye\n";
+        !isOpen; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
+      }
+
+      // invalid
+      else {
+        cout << "Invalid entry: " << input << endl;
+        continue;
+      }
+    }
+
+    // SUBMITTED HANDLER
+    else if (tolower(input[0]) == 'u') {
+      course.printSubmitted();
+      cout.width(6);
+      cout << "\tADD Submitted " << right << "[A]\nREMOVE Submitted" << right
+           << " [R]\n MODIFY Submitted" << right << "[M]:\n $: ";
+      cin >> input;
+      // add submitted
+      if (tolower(input[0]) == 'a') {
+        cout << "Adding a new submitted:\n";
+        cout << "Assignment ID: ";
+        cin >> input;
+        int assignmentId = stoi(input);
+        cout << "Student ID: ";
+        cin >> input;
+        string studentId = input;
+        cout << "Points earned: ";
+        cin >> input;
+        double pointsEarned = stod(input);
+        cout << "Calling course.addSubmitted(" << assignmentId << ","
+             << studentId << "," << pointsEarned << ");\n";
+        course.addSubmitted(assignmentId, studentId, pointsEarned);
+      }
+      // modify submitted
+      else if (tolower(input[0]) == 'm') {
+        cout << "Modify submitted with ID: ";
+        cin >> input;
+        int id = stoi(input);
+        cout << "Assignment ID (or press enter to keep current one): ";
+        cin >> input;
+        int assignmentId = stoi(input);
+        cout << "Student ID (or press enter to keep current one): ";
+        cin >> input;
+        string studentId = input;
+        cout << "Points earned (or press enter to keep current one): ";
+        cin >> input;
+        double pointsEarned = stod(input);
+        cout << "Calling course.updateSubmitted(" << id << "," << assignmentId
+             << "," << studentId << "," << pointsEarned << ");\n";
+        course.updateSubmitted(id, assignmentId, studentId, pointsEarned);
+      }
+      // remove submitted
+      else if (tolower(input[0]) == 'r') {
+        cout << "Remove submitted with ID: ";
+        cin >> input;
+        int id = stoi(input);
+        cout << "Calling course.deleteSubmitted(" << id << ")\n";
+        course.deleteSubmitted(id);
       }
       // quit
       else if (tolower(input[0]) == 'q') {
