@@ -11,6 +11,8 @@
 
 using namespace std;
 
+int convertToInt(string);
+
 int main() {
   // main prompt
   bool isOpen = true; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
@@ -22,8 +24,7 @@ int main() {
   cout << "What would you like to do?\n";
   cout << "WORK on an existing Course ";
   cout.width(6);
-  cout << right << "[W]\nCREATE a new Course " << right << " [C]\n";
-  cout << " $: ";
+  cout << right << "[W]\nCREATE a new Course " << right << " [C]\n $: ";
   // input loop
   while (true) {
     cin >> input;
@@ -74,12 +75,7 @@ int main() {
     cin >> input;
     // students handler
     if (tolower(input[0]) == 's') {
-      cout << "List all the students in this course\n";
-      cout << "Student1 name Student1 id Student1 grade\n";
-      cout << "Student2 name Student2 id Student2 grade\n";
-      cout << "Student3 name Student3 id Student3 grade\n";
-      cout << "Student4 name Student4 id Student4 grade\n\n";
-      cout << "\tADD Student [A]\n\tREMOVE Student [R]\n";
+      course.printStudents();
       cout << " $: ";
       cin >> input;
       // add student
@@ -95,7 +91,7 @@ int main() {
         string stuID = input;
         cout << "Student Name: " << stuFirst << " " << stuLast
              << " Student ID: " << stuID << endl;
-
+        course.addStudent(stuID, stuFirst, stuLast);
       }
       // drop student
       else if (tolower(input[0]) == 'r') {
@@ -107,6 +103,7 @@ int main() {
         // input.getLastName() << endl; cout << "ID: \t\t" << input.getId() <<
         // endl; call drop student function on that student
         cout << "Calling dropStudent(" << input << ")\n";
+        course.deleteStudent(input);
       }
       // quit
       else if (tolower(input[0]) == 'q') {
@@ -117,66 +114,59 @@ int main() {
     }
     // ASSIGNMENTS HANDLER
     else if (tolower(input[0]) == 'a') {
-      cout << "List all the assignments in this course\n";
-      cout << "Assignment1 number Assignment1 name Assignment1 type "
-              "Assignment1 weight Assignment1 average\n";
-      cout << "Assignment2 number Assignment2 name Assignment2 type "
-              "Assignment2 weight Assignment2 average\n";
-      cout << "Assignment3 number Assignment3 name Assignment3 type "
-              "Assignment3 weight Assignment3 average\n";
-      cout << "Assignment4 number Assignment4 name Assignment4 type "
-              "Assignment4 weight Assignment4 average\n";
-      cout << "Assignment5 number Assignment5 name Assignment5 type "
-              "Assignment5 weight Assignment5 average\n";
+      course.printAssignments();
       cout.width(6);
       cout << "\tADD Assignment " << right << "[A]\nREMOVE Assignment" << right
-           << " [R]\n MODIFY Assignment" << right << "[M]: ";
+           << " [R]\n MODIFY Assignment" << right << "[M]:\n $: ";
       cin >> input;
       // add assignment
       if (tolower(input[0]) == 'a') {
-        cout << "Adding a new assignment: \n";
-        cout << "Assignment Name?: ";
+        cout << "Adding a new assignment:\n";
+        cout << "Assignment Name? ";
         cin >> input;
-        string aName = input;
-        cout << "Assignment type? Quiz/Lab/Extra Credit [Q/L/E]: ";
+        string name = input;
+        course.printCategories();
+        cout << "Category ID? ";
         cin >> input;
-        string aType = input;
-        if (tolower(input[0]) == 'q') {
-          cout << "assignment.type = Quiz;\n";
-        } else if (tolower(input[0]) == 'l') {
-          cout << "assignment.type = Lab;\n";
-        } else if (tolower(input[0]) == 'e') {
-          cout << "assignment.type = Extra;\n";
-        } else {
-          cout << "Invalid entry: " << input << endl;
-          continue;
-        }
-        cout << "Assignment weight?: ";
+        int category = stoi(input);
+        cout << "Points possible? ";
         cin >> input;
-        string aWeight = input;
-        cout << "Calling assignmentCreate(" << aName << "," << aType << ","
-             << aWeight << ");\n";
-      }
-      // remove assignment
-      else if (tolower(input[0]) == 'r') {
-        cout << "Remove which assignment? [number]: ";
-        cin >> input;
-        cout << "Calling assignmentRemove(" << input
-             << ")\n"; // to replace with member function
-        break;
+        int weight = stoi(input);
+        cout << "Calling course.addAssignment(" << category << "," << name << ","
+             << weight << ");\n";
+        course.addAssignment(category, name, weight);
       }
       // modify assignment
       else if (tolower(input[0]) == 'm') {
-        cout << "Modify which assignment? [number]: ";
+        cout << "Modify assignment with ID: ";
         cin >> input;
-        cout << "Calling assignmentChange(" << input << ")\n";
-        break;
+        int id = stoi(input);
+        cout << "Assignment Name? (or press enter to keep current one)";
+        getline(cin, input);
+        string name = input;
+        course.printCategories();
+        cout << "Category ID? (or press enter to keep current one)";
+        getline(cin, input);
+        int category = convertToInt(input);
+        cout << "Points possible? (or press enter to keep current one)";
+        getline(cin, input);
+        int weight = convertToInt(input);
+        cout << "Calling course.addAssignment(" << category << "," << name << ","
+        << weight << ");\n";
+        course.updateAssignment(id, category, name, weight);
+      }
+      // remove assignment
+      else if (tolower(input[0]) == 'r') {
+        cout << "Remove assignment with ID: ";
+        cin >> input;
+        int id = stoi(input);
+        cout << "Calling course.deleteAssignment(" << id << ")\n";
+        course.deleteAssignment(id);
       }
       // quit
       else if (tolower(input[0]) == 'q') {
         cout << "Goodbye\n";
         !isOpen; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
-        break;
       }
 
       // invalid
@@ -192,4 +182,11 @@ int main() {
       continue;
     }
   } // while course is open
+}
+
+int convertToInt(string input) {
+  if (input.size() == 0) {
+    return -1;
+  }
+  return stoi(input);
 }

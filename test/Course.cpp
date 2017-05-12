@@ -43,9 +43,9 @@ void Course::addAssignment(int categoryId, string name, int pointsPossible) {
 
 void Course::updateAssignment(int id, int categoryId, string name,
                               int pointsPossible) {
-  assignments[id]->setCategoryId(categoryId);
-  assignments[id]->setName(name);
-  assignments[id]->setPointsPossible(pointsPossible);
+  if (categoryId != -1) assignments[id]->setCategoryId(categoryId);
+  if (name.size() != 0) assignments[id]->setName(name);
+  if (pointsPossible != -1) assignments[id]->setPointsPossible(pointsPossible);
   assignments[id]->update();
 }
 
