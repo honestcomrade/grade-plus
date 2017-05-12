@@ -10,7 +10,7 @@
 using namespace std;
 
 class Assignment : public dbItem {
-  
+
   friend ostream &operator<<(ostream &, const Assignment &);
 
 public:
@@ -36,7 +36,6 @@ public:
   // Static database query commands
   static void create(Database &);
   static map<int, Assignment *> read(Database &);
-
 
 private:
   int id;

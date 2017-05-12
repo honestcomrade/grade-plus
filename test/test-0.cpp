@@ -49,7 +49,8 @@ int main() {
   course.addAssignment(3, "Exam 2", 150);
   course.printAssignments();
   cout << "\n";
-  course.updateAssignment(1, 2, "Lab 1", 30); // here's the problem
+  course.updateAssignment(2, 2, "Lab 1", 30); // here's the problem
+  course.printAssignments();
   course.deleteAssignment(2);
   course.printAssignments();
   cout << "\n";

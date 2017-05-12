@@ -12,7 +12,7 @@
 using namespace std;
 
 class Category : public dbItem {
-  
+
   friend ostream &operator<<(ostream &, const Category &);
 
 public:
@@ -36,7 +36,6 @@ public:
   // Create and read database table
   static void create(Database &);
   static map<int, Category *> read(Database &);
-
 
 private:
   int id;
