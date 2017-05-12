@@ -43,9 +43,12 @@ void Course::addAssignment(int categoryId, string name, int pointsPossible) {
 
 void Course::updateAssignment(int id, int categoryId, string name,
                               int pointsPossible) {
-  if (categoryId != -1) assignments[id]->setCategoryId(categoryId);
-  if (name.size() != 0) assignments[id]->setName(name);
-  if (pointsPossible != -1) assignments[id]->setPointsPossible(pointsPossible);
+  if (categoryId != -1)
+    assignments[id]->setCategoryId(categoryId);
+  if (name.size() != 0)
+    assignments[id]->setName(name);
+  if (pointsPossible != -1)
+    assignments[id]->setPointsPossible(pointsPossible);
   assignments[id]->update();
 }
 
@@ -95,8 +98,10 @@ void Course::addStudent(string id, string firstName, string lastName) {
 }
 
 void Course::updateStudent(string id, string firstName, string lastName) {
-  students[id]->setFirstName(firstName);
-  students[id]->setLastName(lastName);
+  if (firstName.size() != 0)
+    students[id]->setFirstName(firstName);
+  if (lastName.size() != 0)
+    students[id]->setLastName(lastName);
   students[id]->update();
 }
 

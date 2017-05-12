@@ -80,30 +80,43 @@ int main() {
       cin >> input;
       // add student
       if (tolower(input[0]) == 'a') {
-        cout << "Student First Name?: ";
-        cin >> input;
-        string stuFirst = input;
-        cout << "Student Last Name?: ";
-        cin >> input;
-        string stuLast = input;
         cout << "Student ID?: ";
         cin >> input;
-        string stuID = input;
-        cout << "Student Name: " << stuFirst << " " << stuLast
-             << " Student ID: " << stuID << endl;
-        course.addStudent(stuID, stuFirst, stuLast);
+        string id = input;
+        cout << "Student First Name?: ";
+        cin >> input;
+        string firstName = input;
+        cout << "Student Last Name?: ";
+        cin >> input;
+        string lastName = input;
+        cout << "Student Name: " << firstName << " " << lastName
+             << " Student ID: " << id << endl;
+        course.addStudent(id, firstName, lastName);
+      }
+      // modify student
+      else if (tolower(input[0]) == 'a') {
+        cout << "Student ID? (or press enter to keep current one): ";
+        cin >> input;
+        string id = input;
+        cout << "Student First Name? (or press enter to keep current one): ";
+        cin >> input;
+        string firstName = input;
+        cout << "Student Last Name? (or press enter to keep current one): ";
+        cin >> input;
+        string lastName = input;
+        cout << "Student Name: " << firstName << " " << lastName
+             << " Student ID: " << id << endl;
+        course.updateStudent(id, firstName, lastName);
       }
       // drop student
       else if (tolower(input[0]) == 'r') {
-        cout << "Which student to drop? [ID]: ";
+        cout << "Remove student with ID: ";
         cin >> input;
+        string id = input;
 
         // call drop student function on that student
-        // cout << "Name: \t\t" << input.getFirstName() << " " <<
-        // input.getLastName() << endl; cout << "ID: \t\t" << input.getId() <<
-        // endl; call drop student function on that student
-        cout << "Calling dropStudent(" << input << ")\n";
-        course.deleteStudent(input);
+        cout << "Calling course.deleteStudent(" << id << ")\n";
+        course.deleteStudent(id);
       }
       // quit
       else if (tolower(input[0]) == 'q') {
@@ -132,8 +145,8 @@ int main() {
         cout << "Points possible? ";
         cin >> input;
         int weight = stoi(input);
-        cout << "Calling course.addAssignment(" << category << "," << name << ","
-             << weight << ");\n";
+        cout << "Calling course.addAssignment(" << category << "," << name
+             << "," << weight << ");\n";
         course.addAssignment(category, name, weight);
       }
       // modify assignment
@@ -141,18 +154,18 @@ int main() {
         cout << "Modify assignment with ID: ";
         cin >> input;
         int id = stoi(input);
-        cout << "Assignment Name? (or press enter to keep current one)";
+        cout << "Assignment Name? (or press enter to keep current one): ";
         getline(cin, input);
         string name = input;
         course.printCategories();
-        cout << "Category ID? (or press enter to keep current one)";
+        cout << "Category ID? (or press enter to keep current one): ";
         getline(cin, input);
         int category = convertToInt(input);
-        cout << "Points possible? (or press enter to keep current one)";
+        cout << "Points possible? (or press enter to keep current one): ";
         getline(cin, input);
         int weight = convertToInt(input);
-        cout << "Calling course.addAssignment(" << category << "," << name << ","
-        << weight << ");\n";
+        cout << "Calling course.addAssignment(" << category << "," << name
+             << "," << weight << ");\n";
         course.updateAssignment(id, category, name, weight);
       }
       // remove assignment
