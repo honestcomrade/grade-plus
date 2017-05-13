@@ -13,11 +13,11 @@ using namespace std;
 
 int main() {
   // main prompt
-  bool isOpen = true; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
+  bool isOpen = false; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
   Course course;
 
   string input;
-  string openCourse;
+  // string openCourse;
   cout << "Welcome to grade-plus\n";
   cout << "What would you like to do?\n";
   cout << "WORK on an existing Course ";
@@ -31,8 +31,10 @@ int main() {
     if (tolower(input[0]) == 'w') {
       cout << "Which Course: ";
       cin >> input;
-      cout << "Opening Course: " << input << "...\n";
-      course.load(input);
+      string name = input;
+      cout << "Opening Course: " << name << "...\n";
+      course.load(name);
+      isOpen = true;
       break;
     }
 
@@ -44,6 +46,7 @@ int main() {
       string name = input;
       cout << "Creating Course: " << name << endl;
       course.load(name);
+      isOpen = true;
       break;
     }
 
@@ -63,16 +66,18 @@ int main() {
   } // opening loop
 
   // second loop while the course is open
-  while (/*openCourse*/ isOpen) {
-    cout << "LIST ALL THE COURSE DETAILS:\n";
-    cout << "Name: \t" << openCourse << "\n\n";
+  while (isOpen) {
+    // cout << "LIST ALL THE COURSE DETAILS:\n";
+    cout << "Course Name: \t" << course.getName() << "\n\n";
     cout << "\tAdd/Remove/Modify STUDENTS [S]\n\tAdd/Remove/Modify ASSIGNMENTS "
             "[A]\n\tAdd/Remove/Modify CATEGORIES [C]\n\tAdd/Remove/Modify "
             "SUBMITTED [U]\n $: ";
     cin >> input;
     // students handler
-    if (tolower(input[0]) == 's') {
+    if (tolower(input[0]) == 's' || tolower(input[0]) == 'S' ) {
       course.printStudents();
+      cout << "\tAdd STUDENT     [A]\n\tRemove STUDENT [R]\n";
+            // "[A]\n\tAdd/Remove/Modify CATEGORIES [C]\n\tAdd/Remove/Modify "
       cout << " $: ";
       cin >> input;
       // add student
@@ -122,26 +127,31 @@ int main() {
         isOpen = false; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
         break;
       }
+      // print students after all student related activities have been done
+      cout << "Here's the current list roster for " << course.getName() << ":\n";
+      course.printStudents();
     }
     // ASSIGNMENTS HANDLER
     else if (tolower(input[0]) == 'a') {
-      course.printAssignments();
+      cout << "Here's a current list of all the assignments in " << course.getName() << ":\n";
+      cout << "\t"; course.printAssignments(); cout << endl;
       cout.width(6);
-      cout << "\tADD Assignment " << right << "[A]\nREMOVE Assignment" << right
-           << " [R]\n MODIFY Assignment" << right << "[M]:\n $: ";
+      cout << "\tADD Assignment " << right << "[A]\n\tREMOVE Assignment" << right
+           << " [R]\n\tMODIFY Assignment" << right << "[M]:\n $: ";
       cin >> input;
+      cin.ignore();
       // add assignment
       if (tolower(input[0]) == 'a') {
         cout << "Adding a new assignment:\n";
         cout << "Assignment Name: ";
-        cin >> input;
+        getline(cin, input);
         string name = input;
         course.printCategories();
         cout << "Category ID: ";
-        cin >> input;
+        getline(cin, input);
         int category = stoi(input);
         cout << "Points possible: ";
-        cin >> input;
+        getline(cin, input);
         int weight = stoi(input);
         cout << "Calling course.addAssignment(" << category << "," << name
              << "," << weight << ");\n";
@@ -179,6 +189,7 @@ int main() {
       else if (tolower(input[0]) == 'q') {
         cout << "Goodbye\n";
         !isOpen; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
+        break;
       }
 
       // invalid
@@ -186,6 +197,8 @@ int main() {
         cout << "Invalid entry: " << input << endl;
         continue;
       }
+      cout << "Here's a current list of all the assignments in " << course.getName() << ":\n";
+      course.printAssignments();
     }
 
     // CATEGORIES HANDLER
@@ -236,6 +249,7 @@ int main() {
       else if (tolower(input[0]) == 'q') {
         cout << "Goodbye\n";
         !isOpen; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
+        break;
       }
 
       // invalid
@@ -250,19 +264,19 @@ int main() {
       course.printSubmitted();
       cout.width(6);
       cout << "\tADD Submitted " << right << "[A]\nREMOVE Submitted" << right
-           << " [R]\n MODIFY Submitted" << right << "[M]:\n $: ";
+           << " [R]\nMODIFY Submitted" << right << "[M]:\n $: ";
       cin >> input;
       // add submitted
       if (tolower(input[0]) == 'a') {
         cout << "Adding a new submitted:\n";
         cout << "Assignment ID: ";
-        cin >> input;
+        getline(cin, input);
         int assignmentId = stoi(input);
         cout << "Student ID: ";
-        cin >> input;
+        getline(cin, input);
         string studentId = input;
         cout << "Points earned: ";
-        cin >> input;
+        getline(cin, input);
         double pointsEarned = stod(input);
         cout << "Calling course.addSubmitted(" << assignmentId << ","
              << studentId << "," << pointsEarned << ");\n";

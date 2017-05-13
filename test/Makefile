@@ -4,7 +4,7 @@ LDFLAGS=-l sqlite3
 
 OBJS=Assignment.o Category.o Course.o Database.o DatabaseItem.o Student.o Submitted.o
 
-all: test0
+all: test1
 
 test0: test0.out
 test1: test1.out
