@@ -77,6 +77,7 @@ int main() {
     if (tolower(input[0]) == 's' || tolower(input[0]) == 'S' ) {
       course.printStudents();
       cout << "\tAdd STUDENT     [A]\n\tRemove STUDENT [R]\n";
+            // "[A]\n\tAdd/Remove/Modify CATEGORIES [C]\n\tAdd/Remove/Modify "
       cout << " $: ";
       cin >> input;
       // add student
@@ -117,6 +118,7 @@ int main() {
         string id = input;
 
         // call drop student function on that student
+        cout << "Calling course.deleteStudent(" << id << ")\n";
         course.deleteStudent(id);
       }
       // quit
@@ -151,6 +153,8 @@ int main() {
         cout << "Points possible: ";
         getline(cin, input);
         int weight = stoi(input);
+        cout << "Calling course.addAssignment(" << category << "," << name
+             << "," << weight << ");\n";
         course.addAssignment(category, name, weight);
       }
       // modify assignment
@@ -169,6 +173,8 @@ int main() {
         cout << "Points possible (or press enter to keep current one): ";
         getline(cin, input);
         int weight = atoi(input.c_str());
+        cout << "Calling course.addAssignment(" << category << "," << name
+             << "," << weight << ");\n";
         course.updateAssignment(id, category, name, weight);
       }
       // remove assignment
@@ -176,7 +182,7 @@ int main() {
         cout << "Remove assignment with ID: ";
         cin >> input;
         int id = stoi(input);
-        // cout << "Calling course.deleteAssignment(" << id << ")\n";
+        cout << "Calling course.deleteAssignment(" << id << ")\n";
         course.deleteAssignment(id);
       }
       // quit
@@ -211,6 +217,8 @@ int main() {
         cout << "Weight: ";
         cin >> input;
         int weight = stoi(input);
+        cout << "Calling course.addCategory(" << name << "," << weight
+             << ");\n";
         course.addCategory(name, weight);
       }
       // modify category
@@ -225,6 +233,8 @@ int main() {
         cout << "Weight (or press enter to keep current one): ";
         getline(cin, input);
         int weight = atoi(input.c_str());
+        cout << "Calling course.updateCategory(" << name << "," << weight
+             << ");\n";
         course.updateCategory(id, name, weight);
       }
       // remove category
@@ -232,6 +242,7 @@ int main() {
         cout << "Remove category with ID: ";
         cin >> input;
         int id = stoi(input);
+        cout << "Calling course.deleteCategory(" << id << ")\n";
         course.deleteCategory(id);
       }
       // quit
@@ -267,6 +278,8 @@ int main() {
         cout << "Points earned: ";
         getline(cin, input);
         double pointsEarned = stod(input);
+        cout << "Calling course.addSubmitted(" << assignmentId << ","
+             << studentId << "," << pointsEarned << ");\n";
         course.addSubmitted(assignmentId, studentId, pointsEarned);
       }
       // modify submitted
@@ -284,6 +297,8 @@ int main() {
         cout << "Points earned (or press enter to keep current one): ";
         getline(cin, input);
         double pointsEarned = stod(input);
+        cout << "Calling course.updateSubmitted(" << id << "," << assignmentId
+             << "," << studentId << "," << pointsEarned << ");\n";
         course.updateSubmitted(id, assignmentId, studentId, pointsEarned);
       }
       // remove submitted
@@ -291,6 +306,7 @@ int main() {
         cout << "Remove submitted with ID: ";
         cin >> input;
         int id = stoi(input);
+        cout << "Calling course.deleteSubmitted(" << id << ")\n";
         course.deleteSubmitted(id);
       }
       // quit
