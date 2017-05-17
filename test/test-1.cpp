@@ -20,17 +20,16 @@ int main() {
   // string openCourse;
   cout << "Welcome to grade-plus\n";
   cout << "What would you like to do?\n";
-  cout << "WORK on an existing Course ";
   cout.width(6);
-  cout << right << "[W]\nCREATE a new Course " << right << " [C]\n $: ";
+  cout << "\tWORK on an existing Course [W]\n\tCREATE a new Course [C]\n $: ";
   // input loop
   while (true) {
-    cin >> input;
+    getline(cin, input);
 
     // open Course
     if (tolower(input[0]) == 'w') {
       cout << "Which Course: ";
-      cin >> input;
+      getline(cin, input);
       string name = input;
       cout << "Opening Course: " << name << "...\n";
       course.load(name);
@@ -42,7 +41,7 @@ int main() {
     else if (tolower(input[0]) == 'c') {
       cout << "Please enter a unique name\n";
       cout << "Course Name: ";
-      cin >> input;
+      getline(cin, input);
       string name = input;
       cout << "Creating Course: " << name << endl;
       course.load(name);
@@ -69,26 +68,25 @@ int main() {
   while (isOpen) {
     // cout << "LIST ALL THE COURSE DETAILS:\n";
     cout << "Course Name: \t" << course.getName() << "\n\n";
-    cout << "\tAdd/Remove/Modify STUDENTS [S]\n\tAdd/Remove/Modify ASSIGNMENTS "
-            "[A]\n\tAdd/Remove/Modify CATEGORIES [C]\n\tAdd/Remove/Modify "
-            "SUBMITTED [U]\n $: ";
-    cin >> input;
+    cout << "\tSELECT students [S]\n\tSELECT assignments "
+            "[A]\n\tSELECT categories [C]\n\tSELECT submitted [U]\n\tQUIT "
+            "[Q]\n $: ";
+    getline(cin, input);
     // students handler
-    if (tolower(input[0]) == 's' || tolower(input[0]) == 'S' ) {
+    if (tolower(input[0]) == 's' || tolower(input[0]) == 'S') {
       course.printStudents();
-      cout << "\tAdd STUDENT     [A]\n\tRemove STUDENT [R]\n";
-      cout << " $: ";
-      cin >> input;
+      cout << "\tAdd STUDENT [A]\n\tRemove STUDENT [R]\n\tQUIT [Q]\n $: ";
+      getline(cin, input);
       // add student
       if (tolower(input[0]) == 'a') {
         cout << "Student ID?: ";
-        cin >> input;
+        getline(cin, input);
         string id = input;
         cout << "Student First Name?: ";
-        cin >> input;
+        getline(cin, input);
         string firstName = input;
         cout << "Student Last Name?: ";
-        cin >> input;
+        getline(cin, input);
         string lastName = input;
         cout << "Student Name: " << firstName << " " << lastName
              << " Student ID: " << id << endl;
@@ -97,8 +95,7 @@ int main() {
       // modify student
       else if (tolower(input[0]) == 'a') {
         cout << "Student ID: ";
-        cin >> input;
-        cin.ignore();
+        getline(cin, input);
         string id = input;
         cout << "Student First Name (or press enter to keep current one): ";
         getline(cin, input);
@@ -113,7 +110,7 @@ int main() {
       // drop student
       else if (tolower(input[0]) == 'r') {
         cout << "Remove student with ID: ";
-        cin >> input;
+        getline(cin, input);
         string id = input;
 
         // call drop student function on that student
@@ -126,18 +123,21 @@ int main() {
         break;
       }
       // print students after all student related activities have been done
-      cout << "Here's the current list roster for " << course.getName() << ":\n";
+      cout << "Here's the current list roster for " << course.getName()
+           << ":\n";
       course.printStudents();
     }
     // ASSIGNMENTS HANDLER
     else if (tolower(input[0]) == 'a') {
-      cout << "Here's a current list of all the assignments in " << course.getName() << ":\n";
-      cout << "\t"; course.printAssignments(); cout << endl;
+      cout << "Here's a current list of all the assignments in "
+           << course.getName() << ":\n";
+      cout << "\t";
+      course.printAssignments();
+      cout << endl;
       cout.width(6);
-      cout << "\tADD Assignment " << right << "[A]\n\tREMOVE Assignment" << right
-           << " [R]\n\tMODIFY Assignment" << right << "[M]:\n $: ";
-      cin >> input;
-      cin.ignore();
+      cout << "\tADD Assignment [A]\n\tREMOVE Assignment [R]\n\tMODIFY "
+              "Assignment [M]\n\tQUIT [Q]\n $: ";
+      getline(cin, input);
       // add assignment
       if (tolower(input[0]) == 'a') {
         cout << "Adding a new assignment:\n";
@@ -156,8 +156,7 @@ int main() {
       // modify assignment
       else if (tolower(input[0]) == 'm') {
         cout << "Modify assignment with ID: ";
-        cin >> input;
-        cin.ignore();
+        getline(cin, input);
         int id = stoi(input);
         cout << "Assignment Name (or press enter to keep current one): ";
         getline(cin, input);
@@ -174,7 +173,7 @@ int main() {
       // remove assignment
       else if (tolower(input[0]) == 'r') {
         cout << "Remove assignment with ID: ";
-        cin >> input;
+        getline(cin, input);
         int id = stoi(input);
         // cout << "Calling course.deleteAssignment(" << id << ")\n";
         course.deleteAssignment(id);
@@ -191,7 +190,8 @@ int main() {
         cout << "Invalid entry: " << input << endl;
         continue;
       }
-      cout << "Here's a current list of all the assignments in " << course.getName() << ":\n";
+      cout << "Here's a current list of all the assignments in "
+           << course.getName() << ":\n";
       course.printAssignments();
     }
 
@@ -199,25 +199,24 @@ int main() {
     else if (tolower(input[0]) == 'c') {
       course.printCategories();
       cout.width(6);
-      cout << "\tADD Category " << right << "[A]\nREMOVE Category" << right
-           << " [R]\n MODIFY Category" << right << "[M]:\n $: ";
-      cin >> input;
+      cout << "\tADD Category [A]\n\tREMOVE Category [R]\n\tMODIFY Category "
+              "[M]\n\tQUIT [Q]\n $: ";
+      getline(cin, input);
       // add category
       if (tolower(input[0]) == 'a') {
         cout << "Adding a new category:\n";
         cout << "Category Name: ";
-        cin >> input;
+        getline(cin, input);
         string name = input;
         cout << "Weight: ";
-        cin >> input;
+        getline(cin, input);
         int weight = stoi(input);
         course.addCategory(name, weight);
       }
       // modify category
       else if (tolower(input[0]) == 'm') {
         cout << "Modify category with ID: ";
-        cin >> input;
-        cin.ignore();
+        getline(cin, input);
         int id = stoi(input);
         cout << "Category Name (or press enter to keep current one): ";
         getline(cin, input);
@@ -230,7 +229,7 @@ int main() {
       // remove category
       else if (tolower(input[0]) == 'r') {
         cout << "Remove category with ID: ";
-        cin >> input;
+        getline(cin, input);
         int id = stoi(input);
         course.deleteCategory(id);
       }
@@ -252,9 +251,26 @@ int main() {
     else if (tolower(input[0]) == 'u') {
       course.printSubmitted();
       cout.width(6);
-      cout << "\tADD Submitted " << right << "[A]\nREMOVE Submitted" << right
-           << " [R]\nMODIFY Submitted" << right << "[M]:\n $: ";
-      cin >> input;
+      do {
+        cout << "\tFILTER by student [S]\n\tFILTER by assignment [T]\n\tADD "
+                "Submitted [A]\n\tREMOVE Submitted [R]\n\tMODIFY Submitted "
+                "[M]\n\tQUIT [Q]\n $: ";
+        getline(cin, input);
+        // filter by student
+        if (tolower(input[0]) == 's') {
+          cout << "Student ID: ";
+          getline(cin, input);
+          string studentId = input;
+          course.printSubmittedOfStudent(studentId);
+        }
+        // filter by assignment
+        else if (tolower(input[0]) == 't') {
+          cout << "Assignment ID: ";
+          getline(cin, input);
+          int assignmentId = stoi(input);
+          course.printSubmittedOfAssignment(assignmentId);
+        }
+      } while (tolower(input[0]) == 's' || tolower(input[0]) == 't');
       // add submitted
       if (tolower(input[0]) == 'a') {
         cout << "Adding a new submitted:\n";
@@ -272,8 +288,7 @@ int main() {
       // modify submitted
       else if (tolower(input[0]) == 'm') {
         cout << "Modify submitted with ID: ";
-        cin >> input;
-        cin.ignore();
+        getline(cin, input);
         int id = stoi(input);
         cout << "Assignment ID (or press enter to keep current one): ";
         getline(cin, input);
@@ -289,7 +304,7 @@ int main() {
       // remove submitted
       else if (tolower(input[0]) == 'r') {
         cout << "Remove submitted with ID: ";
-        cin >> input;
+        getline(cin, input);
         int id = stoi(input);
         course.deleteSubmitted(id);
       }

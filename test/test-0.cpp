@@ -65,4 +65,3 @@ int main() {
   course.deleteSubmitted(2);
   course.printSubmitted();
 }
-
