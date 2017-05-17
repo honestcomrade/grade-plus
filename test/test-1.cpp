@@ -260,7 +260,7 @@ int main() {
         cout << "Adding a new submitted:\n";
         cout << "Assignment ID: ";
         getline(cin, input);
-        int assignmentId = stoi(input);
+        int assignmentId = stoi(input); // stoi not working with addSubmitted
         cout << "Student ID: ";
         getline(cin, input);
         string studentId = input;
