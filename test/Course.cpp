@@ -85,7 +85,7 @@ void Course::addCategory(string name, int weight) {
   categories[id] = category;
 }
 
-// utility function to update an existing category of assignments 
+// utility function to update an existing category of assignments
 void Course::updateCategory(int id, string name, int weight) {
   if (name.size() != 0)
     categories[id]->setName(name);
@@ -164,18 +164,34 @@ void Course::updateSubmitted(int id, int assignmentId, string studentId,
   submitted[id]->update();
 }
 
- // deletes an existing assignment
+// deletes an existing assignment
 void Course::deleteSubmitted(int id) {
   submitted[id]->remove();
   submitted.erase(id);
 }
 
- // prints a specific assigned assignment
+// prints a specific assigned assignment
 void Course::printSubmitted(int id) { cout << submitted[id] << "\n"; }
 
 // print all assigned assignments
 void Course::printSubmitted() {
   for (auto const &item : submitted) {
     cout << *item.second << "\n";
+  }
+}
+
+void Course::printSubmittedOfStudent(string id) {
+  for (auto const &item : submitted) {
+    if (item.second->getStudentId() == id) {
+      cout << *item.second << "\n";
+    }
+  }
+}
+
+void Course::printSubmittedOfAssignment(int id) {
+  for (auto const &item : submitted) {
+    if (item.second->getAssignmentId() == id) {
+      cout << *item.second << "\n";
+    }
   }
 }
