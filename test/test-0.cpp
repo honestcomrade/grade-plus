@@ -8,6 +8,7 @@ using namespace std;
 int main() {
   if (remove("test-0.sqlite") != 0) {
     cout << "Error with deletion of database file\n";
+    return 1;
   } else {
     cout << "Database file successfully deleted\n";
   }
