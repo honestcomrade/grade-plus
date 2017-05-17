@@ -32,7 +32,8 @@ int callback(void *res, int columns, char **data, char **) {
 }
 
 vector<vector<string>> Database::execute(string command) const {
-  DEBUG(cout << "Executing SQL: " << command << endl; cout << "Data: ");
+  DEBUG(cout << "Executing SQL: " << command << endl);
+  DEBUG(cout << "Data: ");
 
   vector<vector<string>> results;
   char *err;
@@ -43,14 +44,14 @@ vector<vector<string>> Database::execute(string command) const {
                             &err             /* Error msg written here */
                             );
 
-  DEBUG(cout << endl;
-        cout << "DB status: "
-             << (status == SQLITE_OK ? "OK" : sqlite3_errstr(status));
-        if (err) {
-          cout << ", Error: " << err;
-          sqlite3_free(err);
-        };
-        cout << endl);
+  DEBUG(cout << endl
+             << "DB status: "
+             << (status == SQLITE_OK ? "OK" : sqlite3_errstr(status)) << endl);
+
+  if (err) {
+    cout << "Error: " << err << endl;
+    sqlite3_free(err);
+  }
 
   return results;
 }
