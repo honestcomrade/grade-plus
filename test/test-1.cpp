@@ -1,9 +1,4 @@
-#include "Assignment.h"
-#include "Category.h"
 #include "Course.h"
-#include "Database.h"
-#include "Student.h"
-#include "Submitted.h"
 
 #include <iomanip>
 #include <iostream>

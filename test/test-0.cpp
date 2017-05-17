@@ -1,4 +1,3 @@
-#include "Assignment.h"
 #include "Course.h"
 
 #include <cstdio>
