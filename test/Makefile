@@ -1,5 +1,5 @@
 CXX=clang++
-CPPFLAGS=-std=c++11
+CPPFLAGS=-std=c++11 -D'DEBUG(x) x;'
 LDFLAGS=-l sqlite3
 
 OBJS=Assignment.o Category.o Course.o Database.o DatabaseItem.o Student.o Submitted.o

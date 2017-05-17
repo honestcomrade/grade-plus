@@ -22,7 +22,8 @@ int callback(void *res, int columns, char **data, char **) {
 
   for (int i = 0; i < columns; i++) {
     row.push_back(data[i] ? data[i] : "NULL");
-    cout << data[i] << ", ";
+
+    DEBUG(cout << data[i] << ", ");
   }
 
   results.push_back(row);
@@ -31,8 +32,8 @@ int callback(void *res, int columns, char **data, char **) {
 }
 
 vector<vector<string>> Database::execute(string command) const {
-  cout << "Executing SQL: " << command << endl;
-  cout << "Data: ";
+  DEBUG(cout << "Executing SQL: " << command << endl; cout << "Data: ");
+
   vector<vector<string>> results;
   char *err;
   int status = sqlite3_exec(db,              /* An open database */
@@ -42,14 +43,14 @@ vector<vector<string>> Database::execute(string command) const {
                             &err             /* Error msg written here */
                             );
 
-  cout << endl;
-  cout << "DB status: "
-       << (status == SQLITE_OK ? "OK" : sqlite3_errstr(status));
-  if (err) {
-    cout << ", Error: " << err;
-    sqlite3_free(err);
-  }
-  cout << endl;
+  DEBUG(cout << endl;
+        cout << "DB status: "
+             << (status == SQLITE_OK ? "OK" : sqlite3_errstr(status));
+        if (err) {
+          cout << ", Error: " << err;
+          sqlite3_free(err);
+        };
+        cout << endl);
 
   return results;
 }
