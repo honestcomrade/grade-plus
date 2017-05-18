@@ -138,35 +138,34 @@ int main() {
           course.printCategories();
           cout << "Category ID: ";
           getline(cin, input);
-          int category = stoi(input);
+          int category = input.size() ? stoi(input) : -1;
           cout << "Points possible: ";
           getline(cin, input);
-          int weight = stoi(input);
+          int weight = input.size() ? stoi(input) : -1;
           course.addAssignment(category, name, weight);
         }
         // modify assignment
         else if (tolower(input[0]) == 'm') {
           cout << "Modify assignment with ID: ";
           getline(cin, input);
-          int id = stoi(input);
+          int id = input.size() ? stoi(input) : -1;
           cout << "Assignment name (or press enter to keep current one): ";
           getline(cin, input);
           string name = input;
           course.printCategories();
           cout << "Category ID (or press enter to keep current one): ";
           getline(cin, input);
-          int category = atoi(input.c_str());
+          int category = input.size() ? stoi(input) : -1;
           cout << "Points possible (or press enter to keep current one): ";
           getline(cin, input);
-          int weight = atoi(input.c_str());
+          int weight = input.size() ? stoi(input) : -1;
           course.updateAssignment(id, category, name, weight);
         }
         // remove assignment
         else if (tolower(input[0]) == 'r') {
           cout << "Remove assignment with ID: ";
           getline(cin, input);
-          int id = stoi(input);
-          // cout << "Calling course.deleteAssignment(" << id << ")\n";
+          int id = input.size() ? stoi(input) : -1;
           course.deleteAssignment(id);
         }
         // up
@@ -201,27 +200,27 @@ int main() {
           string name = input;
           cout << "Weight: ";
           getline(cin, input);
-          int weight = stoi(input);
+          int weight = input.size() ? stoi(input) : -1;
           course.addCategory(name, weight);
         }
         // modify category
         else if (tolower(input[0]) == 'm') {
           cout << "Modify category with ID: ";
           getline(cin, input);
-          int id = stoi(input);
+          int id = input.size() ? stoi(input) : -1;
           cout << "Category name (or press enter to keep current one): ";
           getline(cin, input);
           string name = input;
           cout << "Weight (or press enter to keep current one): ";
           getline(cin, input);
-          int weight = atoi(input.c_str());
+          int weight = input.size() ? stoi(input) : -1;
           course.updateCategory(id, name, weight);
         }
         // remove category
         else if (tolower(input[0]) == 'r') {
           cout << "Remove category with ID: ";
           getline(cin, input);
-          int id = stoi(input);
+          int id = input.size() ? stoi(input) : -1;
           course.deleteCategory(id);
         }
         // up
@@ -263,7 +262,7 @@ int main() {
           else if (option == 't') {
             cout << "Assignment ID: ";
             getline(cin, input);
-            int assignmentId = stoi(input);
+            int assignmentId = input.size() ? stoi(input) : -1;
             course.printSubmittedOfAssignment(assignmentId);
           }
         } while (option == 's' || option == 't');
@@ -273,7 +272,7 @@ int main() {
           course.printAssignments();
           cout << "Assignment ID: ";
           getline(cin, input);
-          int assignmentId = stoi(input); // stoi not working with addSubmitted
+          int assignmentId = input.size() ? stoi(input) : -1;
           course.printStudents();
           cout << "Student ID: ";
           getline(cin, input);
@@ -284,11 +283,11 @@ int main() {
         else if (tolower(input[0]) == 'm') {
           cout << "Modify submission with ID: ";
           getline(cin, input);
-          int id = stoi(input);
+          int id = input.size() ? stoi(input) : -1;
           course.printAssignments();
           cout << "Assignment ID (or press enter to keep current one): ";
           getline(cin, input);
-          int assignmentId = stoi(input);
+          int assignmentId = input.size() ? stoi(input) : -1;
           course.printStudents();
           cout << "Student ID (or press enter to keep current one): ";
           getline(cin, input);
@@ -299,14 +298,14 @@ int main() {
         else if (tolower(input[0]) == 'r') {
           cout << "Remove submission with ID: ";
           getline(cin, input);
-          int id = stoi(input);
+          int id = input.size() ? stoi(input) : -1;
           course.deleteSubmitted(id);
         }
         // grade submitted
         else if (tolower(input[0]) == 'g') {
           cout << "Grade submission with ID: ";
           getline(cin, input);
-          int id = stoi(input);
+          int id = input.size() ? stoi(input) : -1;
           cout << "Points earned: ";
           getline(cin, input);
           double pointsEarned = stod(input);
