@@ -270,9 +270,11 @@ int main() {
         // add submitted
         if (tolower(input[0]) == 'a') {
           cout << "Adding a new submission:\n";
+          course.printAssignments();
           cout << "Assignment ID: ";
           getline(cin, input);
           int assignmentId = stoi(input); // stoi not working with addSubmitted
+          course.printStudents();
           cout << "Student ID: ";
           getline(cin, input);
           string studentId = input;
@@ -283,9 +285,11 @@ int main() {
           cout << "Modify submission with ID: ";
           getline(cin, input);
           int id = stoi(input);
+          course.printAssignments();
           cout << "Assignment ID (or press enter to keep current one): ";
           getline(cin, input);
           int assignmentId = stoi(input);
+          course.printStudents();
           cout << "Student ID (or press enter to keep current one): ";
           getline(cin, input);
           string studentId = input;
