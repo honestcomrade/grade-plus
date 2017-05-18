@@ -181,17 +181,33 @@ void Course::printSubmitted() {
 }
 
 void Course::printSubmittedOfStudent(string id) {
+  int totalPointsEarned = 0;
+  int totalPointsPossible = 0;
   for (auto const &item : submitted) {
     if (item.second->getStudentId() == id) {
       cout << *item.second << "\n";
+      totalPointsEarned += item.second->getPointsEarned();
+      int assignmentId = item.second->getAssignmentId();
+      totalPointsPossible += assignments[assignmentId]->getPointsPossible();
     }
   }
+  double grade = (totalPointsEarned / totalPointsPossible) * 100;
+  cout << "Points earned: " << totalPointsEarned << "\n";
+  cout << "Points possible: " << totalPointsPossible << "\n";
+  cout << "Grade: " << grade << "%\n";
 }
 
 void Course::printSubmittedOfAssignment(int id) {
+  int totalPointsEarned = 0;
+  int pointsPossible = assignments[id]->getPointsPossible();
+  int totalPointsPossible = 0;
   for (auto const &item : submitted) {
     if (item.second->getAssignmentId() == id) {
       cout << *item.second << "\n";
+      totalPointsEarned += item.second->getPointsEarned();
+      totalPointsPossible += pointsPossible;
     }
   }
+  double grade = (totalPointsEarned / totalPointsPossible) * 100;
+  cout << "Average grade: " << grade << "%\n";
 }
