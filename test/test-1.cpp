@@ -13,7 +13,11 @@ int main() {
 
   string input;
   // string openCourse;
-  cout << "Welcome to grade-plus\n";
+
+  cout << "  _____            __        ___  __       \n";
+  cout << " / ___/______ ____/ /__ ____/ _ \\/ /_ _____\n";
+  cout << "/ (_ / __/ _ `/ _  / -_)___/ ___/ / // (_-<\n";
+  cout << "\\___/_/  \\_,_/\\_,_/\\__/   /_/  /_/\\_,_/___/\n\n";
   cout << "What would you like to do?\n";
   cout.width(6);
   cout << "\tWORK on an existing Course [W]\n\tCREATE a new Course [C]\n\t$: ";
