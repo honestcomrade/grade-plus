@@ -12,17 +12,16 @@ int main() {
   Course course;
 
   string input;
-  // string openCourse;
 
   cout << "  _____            __        ___  __       \n";
   cout << " / ___/______ ____/ /__ ____/ _ \\/ /_ _____\n";
   cout << "/ (_ / __/ _ `/ _  / -_)___/ ___/ / // (_-<\n";
   cout << "\\___/_/  \\_,_/\\_,_/\\__/   /_/  /_/\\_,_/___/\n\n";
-  cout << "What would you like to do?\n";
-  cout.width(6);
-  cout << "\tWORK on an existing Course [W]\n\tCREATE a new Course [C]\n\t$: ";
   // input loop
   while (true) {
+    cout << "What would you like to do?\n";
+    cout.width(6);
+    cout << "\tWORK on an existing Course [W]\n\tCREATE a new Course [C]\n\tQUIT [Q]\n\t$: ";
     getline(cin, input);
 
     // open Course
@@ -51,22 +50,18 @@ int main() {
     // quit
     else if (tolower(input[0]) == 'q') {
       cout << "Goodbye\n";
-      isOpen = false;
       break;
     }
 
     // invalid
     else {
       cout << "Invalid entry: " << input << endl;
-      cout << "What would you like to do?\n";
-      continue;
     }
   } // opening loop
 
   // second loop while the course is open
   while (isOpen) {
     // cout << "LIST ALL THE COURSE DETAILS:\n";
-    cout << "\n";
     cout << "Course Name: \t" << course.getName() << "\n";
     cout << "\tSELECT students [S]\n\tSELECT assignments "
             "[A]\n\tSELECT categories [C]\n\tSELECT submissions [U]\n\tQUIT "
@@ -120,12 +115,7 @@ int main() {
       else if (tolower(input[0]) == 'q') {
         cout << "Goodbye\n";
         isOpen = false; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
-        break;
       }
-      // print students after all student related activities have been done
-      cout << "Here's the current list roster for " << course.getName()
-           << ":\n";
-      course.printStudents();
     }
     // ASSIGNMENTS HANDLER
     else if (tolower(input[0]) == 'a') {
@@ -181,18 +171,12 @@ int main() {
       // quit
       else if (tolower(input[0]) == 'q') {
         cout << "Goodbye\n";
-        !isOpen; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
-        break;
+        isOpen = false; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
       }
-
       // invalid
       else {
         cout << "Invalid entry: " << input << endl;
-        continue;
       }
-      cout << "Here's a current list of all the assignments in "
-           << course.getName() << ":\n";
-      course.printAssignments();
     }
 
     // CATEGORIES HANDLER
@@ -236,14 +220,11 @@ int main() {
       // quit
       else if (tolower(input[0]) == 'q') {
         cout << "Goodbye\n";
-        !isOpen; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
-        break;
+        isOpen = false; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
       }
-
       // invalid
       else {
         cout << "Invalid entry: " << input << endl;
-        continue;
       }
     }
 
@@ -315,20 +296,23 @@ int main() {
       // quit
       else if (tolower(input[0]) == 'q') {
         cout << "Goodbye\n";
-        !isOpen; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
+        isOpen = false; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
       }
-
       // invalid
       else {
         cout << "Invalid entry: " << input << endl;
-        continue;
       }
+    }
+    
+    // quit
+    else if (tolower(input[0]) == 'q') {
+      cout << "Goodbye\n";
+      isOpen = false; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
     }
 
     // else invalid
     else {
       cout << "Invalid entry: " << input << endl;
-      continue;
     }
   } // while course is open
 }
