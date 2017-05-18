@@ -6,7 +6,7 @@
 using namespace std;
 
 int main() {
-    if (remove("test.sqlite") != 0) {
+    if (remove("test-2.sqlite") != 0) {
         cout << "Error with deletion of database file\n";
     } else {
         cout << "Database file successfully deleted\n";
@@ -14,7 +14,7 @@ int main() {
     
     // Instante Course object.
     cout << "Testing instantiation of a Course object:" << endl;
-    Course course("test");
+    Course course("test-2");
     cout << "Created " << course.getName() << "\n\n";
     
     // Add students
