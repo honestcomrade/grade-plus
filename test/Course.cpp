@@ -181,8 +181,8 @@ void Course::printSubmitted() {
 }
 
 void Course::printSubmittedOfStudent(string id) {
-  int totalPointsEarned = 0;
-  int totalPointsPossible = 0;
+  double totalPointsEarned = 0;
+  double totalPointsPossible = 0;
   for (auto const &item : submitted) {
     if (item.second->getStudentId() == id) {
       cout << *item.second << "\n";
@@ -198,9 +198,9 @@ void Course::printSubmittedOfStudent(string id) {
 }
 
 void Course::printSubmittedOfAssignment(int id) {
-  int totalPointsEarned = 0;
-  int pointsPossible = assignments[id]->getPointsPossible();
-  int totalPointsPossible = 0;
+  double totalPointsEarned = 0;
+  double pointsPossible = assignments[id]->getPointsPossible();
+  double totalPointsPossible = 0;
   for (auto const &item : submitted) {
     if (item.second->getAssignmentId() == id) {
       cout << *item.second << "\n";
