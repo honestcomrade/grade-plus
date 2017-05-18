@@ -8,7 +8,7 @@ using namespace std;
 
 int main() {
   // main prompt
-  bool isOpen = false; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
+  bool isOpen = false;
   Course course;
 
   string input;
@@ -117,7 +117,7 @@ int main() {
         // quit
         else if (tolower(input[0]) == 'q') {
           cout << "Goodbye\n";
-          isOpen = false; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
+          isOpen = false;
           break;
         }
       }
@@ -175,7 +175,7 @@ int main() {
         // quit
         else if (tolower(input[0]) == 'q') {
           cout << "Goodbye\n";
-          isOpen = false; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
+          isOpen = false;
           break;
         }
         // invalid
@@ -230,7 +230,7 @@ int main() {
         // quit
         else if (tolower(input[0]) == 'q') {
           cout << "Goodbye\n";
-          isOpen = false; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
+          isOpen = false;
           break;
         }
         // invalid
@@ -318,7 +318,7 @@ int main() {
         // quit
         else if (tolower(input[0]) == 'q') {
           cout << "Goodbye\n";
-          isOpen = false; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
+          isOpen = false;
           break;
         }
         // invalid
@@ -331,7 +331,7 @@ int main() {
     // quit
     else if (tolower(input[0]) == 'q') {
       cout << "Goodbye\n";
-      isOpen = false; // MUST REPLACE WITH MEMBER FUNCTION FOR COURSE
+      isOpen = false;
     }
 
     // else invalid
