@@ -12,7 +12,6 @@
 using namespace std;
 
 class Category : public DatabaseItem {
-
   friend ostream &operator<<(ostream &, const Category &);
 
 public:
@@ -41,8 +40,6 @@ private:
   int id;
   string name;
   int weight;
-
-  // Database &db;
 };
 
 #endif

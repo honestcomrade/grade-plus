@@ -1,18 +1,12 @@
 CXX=clang++
-CPPFLAGS=-std=c++11
+CPPFLAGS=-std=c++11 -D'DEBUG(x)'
 LDFLAGS=-l sqlite3
 
 OBJS=Assignment.o Category.o Course.o Database.o DatabaseItem.o Student.o Submitted.o
 
-all: test1
+all: grade-plus
 
-test0: test0.out
-test1: test1.out
-
-test0.out: test-0.cpp ${OBJS}
-	$(CXX) $(CPPFLAGS) $(LDFLAGS) -o $@ $^
-
-test1.out: test-1.cpp ${OBJS}
+grade-plus: main.cpp ${OBJS}
 	$(CXX) $(CPPFLAGS) $(LDFLAGS) -o $@ $^
 
 clean:

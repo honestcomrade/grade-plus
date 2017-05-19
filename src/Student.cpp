@@ -8,8 +8,8 @@
 using namespace std;
 
 ostream &operator<<(ostream &output, const Student &student) {
-  output << "Student " << student.getId() << "  ";
-  output << "First Name: " << student.getFirstName() << "  ";
+  output << "Student " << student.getId() << " ";
+  output << "First Name: " << student.getFirstName() << ", ";
   output << "Last Name: " << student.getLastName();
   return output;
 }

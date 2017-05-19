@@ -44,6 +44,8 @@ public:
   void deleteSubmitted(int);
   void printSubmitted(int);
   void printSubmitted();
+  void printSubmittedOfStudent(string);
+  void printSubmittedOfAssignment(int);
 
 private:
   string name;

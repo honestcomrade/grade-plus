@@ -10,7 +10,6 @@
 using namespace std;
 
 class Assignment : public DatabaseItem {
-
   friend ostream &operator<<(ostream &, const Assignment &);
 
 public:
@@ -42,8 +41,6 @@ private:
   int categoryId;
   string name;
   double pointsPossible;
-
-  // Database &db;
 };
 
 #endif // ASSIGNMENT_H
