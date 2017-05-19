@@ -277,7 +277,7 @@ int main() {
           cout << "Student ID: ";
           getline(cin, input);
           string studentId = input;
-          course.addSubmitted(assignmentId, studentId, NULL);
+          course.addSubmitted(assignmentId, studentId, 0);
         }
         // modify submitted
         else if (tolower(input[0]) == 'm') {
@@ -292,7 +292,7 @@ int main() {
           cout << "Student ID (or press enter to keep current one): ";
           getline(cin, input);
           string studentId = input;
-          course.updateSubmitted(id, assignmentId, studentId, NULL);
+          course.updateSubmitted(id, assignmentId, studentId, 0);
         }
         // remove submitted
         else if (tolower(input[0]) == 'r') {
