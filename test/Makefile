@@ -21,3 +21,6 @@ test2.out: test-2.cpp ${OBJS}
 	
 clean:
 	rm -f *.out *.o
+
+%.o: %.cpp %.h
+	$(CXX) $(CPPFLAGS) -c -o $@ $<

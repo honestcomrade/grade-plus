@@ -11,3 +11,6 @@ grade-plus: main.cpp ${OBJS}
 
 clean:
 	rm -f grade-plus *.o
+
+%.o: %.cpp %.h
+	$(CXX) $(CPPFLAGS) -c -o $@ $<
