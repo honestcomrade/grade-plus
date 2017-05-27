@@ -20,6 +20,4 @@ test2.out: test-2.cpp ${OBJS}
 	$(CXX) $(CPPFLAGS) $(LDFLAGS) -o $@ $^
 	
 clean:
-	ls | grep '[.]out' > /dev/null && rm *.out || true
-	ls | grep '[.]o' > /dev/null && rm *.o || true
-	ls | grep 'grade-plus' > /dev/null && rm grade-plus || true
+	rm -f *.out *.o
